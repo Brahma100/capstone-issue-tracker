@@ -1,0 +1,589 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders the AppNavbar 1`] = `
+<DocumentFragment>
+  <div
+    style="color: rgb(0, 0, 0); text-decoration: none;"
+  >
+    <nav
+      class="navbar navbar-expand-sm navbar-light"
+    >
+      <div
+        class="container"
+      >
+        <span
+          class="navbar-brand"
+        >
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+          >
+            <div
+              class="nav-brand"
+            >
+              <img
+                alt="alt"
+                class="nav-logo"
+                src="logo.jpg"
+              />
+              <div
+                class="brand-text"
+              >
+                <span>
+                  <b>
+                    Ticket
+                  </b>
+                </span>
+                <b>
+                  TrackerZ
+                </b>
+              </div>
+            </div>
+          </a>
+        </span>
+        <button
+          aria-label="Toggle navigation"
+          class="navbar-toggler collapsed"
+          type="button"
+        >
+          <span
+            class="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          class="mainNavCollapse navbar-collapse collapse"
+        >
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+            style="margin-left: auto;"
+          >
+            <b>
+              Home
+            </b>
+          </a>
+          <div
+            class="justify-content-center navbar-nav"
+          >
+            <div
+              class="nav-item"
+            >
+              <a
+                href="/login"
+              >
+                <button
+                  class="btn btn-primary"
+                  style="padding-left: 1.5rem; padding-right: 1.5rem;"
+                  type="button"
+                >
+                  <b>
+                     Register
+                  </b>
+                </button>
+              </a>
+            </div>
+            <div
+              class="nav-item"
+            >
+              <a
+                aria-current="page"
+                class="active"
+                href="/"
+              >
+                <button
+                  class="btn btn-primary"
+                  style="background: rgb(122, 123, 151); padding-left: 1.5rem; padding-right: 1.5rem;"
+                  type="button"
+                >
+                  <b>
+                     About
+                  </b>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div
+    class="notifications-wrapper"
+  />
+  <div>
+    <div
+      class="App"
+      style="align-items: center; background-image: url(back.jpg); background-repeat: no-repeat;"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="container-fluid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col-md-6"
+              >
+                <div
+                  class="card"
+                  style="margin-top: 5rem;"
+                >
+                  <div
+                    class="card-header"
+                  >
+                    <div
+                      style="display: flex; flex-direction: column; align-items: center;"
+                    >
+                      <h7
+                        style="font-size: 22px;"
+                      >
+                        <b>
+                          Login Now
+                        </b>
+                      </h7>
+                      <span
+                        style="font-size: 14px; color: rgba(59, 62, 102, 0.5);"
+                      >
+                        Login To Continue The Contribution with Our Advanced Tools!!
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="card-body"
+                  >
+                    <form
+                      class=""
+                      novalidate=""
+                    >
+                      <div
+                        class="form-row"
+                      >
+                        <div
+                          class="form-group col-md-12"
+                        >
+                          <label
+                            class="form-label"
+                            for="validationFormik02"
+                          >
+                            Email ID
+                          </label>
+                          <div
+                            class="input-group"
+                          >
+                            <div
+                              class="input-group-prepend"
+                            >
+                              <span
+                                class="input-group-text"
+                                id="inputGroupPrepend"
+                              >
+                                @
+                              </span>
+                            </div>
+                            <input
+                              aria-describedby="inputGroupPrepend"
+                              class="form-control"
+                              id="validationFormik02"
+                              name="email"
+                              placeholder="Email ID"
+                              type="text"
+                              value=""
+                            />
+                            <div
+                              class="valid-feedback"
+                            >
+                              Looks good!
+                            </div>
+                            <div
+                              class="invalid-feedback"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="form-row"
+                      >
+                        <div
+                          class="form-group col-md-12"
+                        >
+                          <label
+                            class="form-label"
+                            for="validationFormik03"
+                          >
+                            Password
+                          </label>
+                          <input
+                            class="form-control"
+                            id="validationFormik03"
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            value=""
+                          />
+                          <div
+                            class="valid-feedback"
+                          >
+                            Looks good!
+                          </div>
+                          <div
+                            class="invalid-feedback"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        class="btn btn-primary"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                      <input
+                        checked=""
+                        style="margin-left: 1rem; margin-top: .5rem;"
+                        type="checkbox"
+                      />
+                      <span>
+                          Remember me!
+                      </span>
+                      <div
+                        class="forgot-password text-right"
+                        style="margin-top: 1rem;"
+                      >
+                        Don't have an account?  
+                        <span>
+                          <a>
+                            <b>
+                              Create an Account
+                            </b>
+                          </a>
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-md-6"
+              >
+                <div
+                  class="banner-card  card"
+                  style="margin-top: 5rem;"
+                >
+                  <div
+                    class="banner"
+                  >
+                    <img
+                      alt="alt"
+                      src="LoginSVG.png"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Renders the UserForm 1`] = `
+<DocumentFragment>
+  <div
+    style="color: rgb(0, 0, 0); text-decoration: none;"
+  >
+    <nav
+      class="navbar navbar-expand-sm navbar-light"
+    >
+      <div
+        class="container"
+      >
+        <span
+          class="navbar-brand"
+        >
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+          >
+            <div
+              class="nav-brand"
+            >
+              <img
+                alt="alt"
+                class="nav-logo"
+                src="logo.jpg"
+              />
+              <div
+                class="brand-text"
+              >
+                <span>
+                  <b>
+                    Ticket
+                  </b>
+                </span>
+                <b>
+                  TrackerZ
+                </b>
+              </div>
+            </div>
+          </a>
+        </span>
+        <button
+          aria-label="Toggle navigation"
+          class="navbar-toggler collapsed"
+          type="button"
+        >
+          <span
+            class="navbar-toggler-icon"
+          />
+        </button>
+        <div
+          class="mainNavCollapse navbar-collapse collapse"
+        >
+          <a
+            aria-current="page"
+            class="active"
+            href="/"
+            style="margin-left: auto;"
+          >
+            <b>
+              Home
+            </b>
+          </a>
+          <div
+            class="justify-content-center navbar-nav"
+          >
+            <div
+              class="nav-item"
+            >
+              <a
+                href="/login"
+              >
+                <button
+                  class="btn btn-primary"
+                  style="padding-left: 1.5rem; padding-right: 1.5rem;"
+                  type="button"
+                >
+                  <b>
+                     Register
+                  </b>
+                </button>
+              </a>
+            </div>
+            <div
+              class="nav-item"
+            >
+              <a
+                aria-current="page"
+                class="active"
+                href="/"
+              >
+                <button
+                  class="btn btn-primary"
+                  style="background: rgb(122, 123, 151); padding-left: 1.5rem; padding-right: 1.5rem;"
+                  type="button"
+                >
+                  <b>
+                     About
+                  </b>
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+  <div
+    class="notifications-wrapper"
+  />
+  <div>
+    <div
+      class="App"
+      style="align-items: center; background-image: url(back.jpg); background-repeat: no-repeat;"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="container-fluid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col-md-6"
+              >
+                <div
+                  class="card"
+                  style="margin-top: 5rem;"
+                >
+                  <div
+                    class="card-header"
+                  >
+                    <div
+                      style="display: flex; flex-direction: column; align-items: center;"
+                    >
+                      <h7
+                        style="font-size: 22px;"
+                      >
+                        <b>
+                          Login Now
+                        </b>
+                      </h7>
+                      <span
+                        style="font-size: 14px; color: rgba(59, 62, 102, 0.5);"
+                      >
+                        Login To Continue The Contribution with Our Advanced Tools!!
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="card-body"
+                  >
+                    <form
+                      class=""
+                      novalidate=""
+                    >
+                      <div
+                        class="form-row"
+                      >
+                        <div
+                          class="form-group col-md-12"
+                        >
+                          <label
+                            class="form-label"
+                            for="validationFormik02"
+                          >
+                            Email ID
+                          </label>
+                          <div
+                            class="input-group"
+                          >
+                            <div
+                              class="input-group-prepend"
+                            >
+                              <span
+                                class="input-group-text"
+                                id="inputGroupPrepend"
+                              >
+                                @
+                              </span>
+                            </div>
+                            <input
+                              aria-describedby="inputGroupPrepend"
+                              class="form-control"
+                              id="validationFormik02"
+                              name="email"
+                              placeholder="Email ID"
+                              type="text"
+                              value=""
+                            />
+                            <div
+                              class="valid-feedback"
+                            >
+                              Looks good!
+                            </div>
+                            <div
+                              class="invalid-feedback"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="form-row"
+                      >
+                        <div
+                          class="form-group col-md-12"
+                        >
+                          <label
+                            class="form-label"
+                            for="validationFormik03"
+                          >
+                            Password
+                          </label>
+                          <input
+                            class="form-control"
+                            id="validationFormik03"
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            value=""
+                          />
+                          <div
+                            class="valid-feedback"
+                          >
+                            Looks good!
+                          </div>
+                          <div
+                            class="invalid-feedback"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        class="btn btn-primary"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                      <input
+                        checked=""
+                        style="margin-left: 1rem; margin-top: .5rem;"
+                        type="checkbox"
+                      />
+                      <span>
+                          Remember me!
+                      </span>
+                      <div
+                        class="forgot-password text-right"
+                        style="margin-top: 1rem;"
+                      >
+                        Don't have an account?  
+                        <span>
+                          <a>
+                            <b>
+                              Create an Account
+                            </b>
+                          </a>
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-md-6"
+              >
+                <div
+                  class="banner-card  card"
+                  style="margin-top: 5rem;"
+                >
+                  <div
+                    class="banner"
+                  >
+                    <img
+                      alt="alt"
+                      src="LoginSVG.png"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

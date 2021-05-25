@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Renders the Issues 1`] = `
+<DocumentFragment>
+  <div
+    style="background-image: url(back.jpg); background-repeat: no-repeat;"
+  >
+    <div
+      class="container"
+      style="padding-top: 2rem; width: 100%;"
+    >
+      <div
+        class="content"
+      >
+        <div
+          class="spinner-undefined"
+          style="width: 3rem; height: 3rem; color: green;"
+          type="grow"
+        />
+      </div>
+      <div
+        style="justify-content: space-around; display: flex; align-items: center;"
+      >
+        <ul
+          class="pagination"
+        />
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
