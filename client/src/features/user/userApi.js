@@ -26,9 +26,9 @@ export default class UserApi{
     }
 
 
-    static loginUser(){
-        const email="2@a.a";
-        const password="aaaaaa";
+    static loginUser({email,password}){
+        // const email="2@a.a";
+        // const password="aaaaaa";
         const config={
             headers:{
                 "Content-Type":"application/json"
@@ -39,6 +39,7 @@ export default class UserApi{
 
         return axios.post("http://localhost:8000/auth/login",body,config)
              .then(res=>res.data)
+             .catch(err=>err)
 
     }
 

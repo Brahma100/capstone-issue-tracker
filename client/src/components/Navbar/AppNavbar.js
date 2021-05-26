@@ -59,8 +59,8 @@ function AppNavbar(){
                         </div>
                         </div>:'Guest'}
                     <div>
-                        <span style={{color:'red',fontWeight:400,fontSize:'80%'}}>Admin</span>
-                        <div style={{color:'#3b3e66'}}>{user? user.fname+" "+user.lname:'Hello Gest'}</div>
+                        <span style={{color:'#9da59a',fontWeight:400,fontSize:'80%'}}>Admin</span>
+                        <div style={{color:'#ff7a18',fontWeight:'bold'}}>{user? user.fname+" "+user.lname:'Hello Gest'}</div>
                     </div>
                    
                     
@@ -75,7 +75,7 @@ function AppNavbar(){
                     </div>:'X'}
                     <div>
                         <span style={{color:'red',fontWeight:400,fontSize:'80%'}}>Tracker Admin</span>
-                        <div style={{color:'#3b3e66'}}>{user? user.email:'Hello Guest'}</div>
+                        <div style={{color:'rgb(187 187 187)'}}>{user? user.email:'Hello Guest'}</div>
                     </div>
                             </Dropdown.Item><hr/>
                              <Dropdown.Item className="dropdown-list-nav"> <Nav.Item  >
@@ -112,7 +112,7 @@ function AppNavbar(){
                 </Nav.Item>
                 <Nav.Item>
                         <NavLink onClick={ toggle} to='#'>
-                    <       Button style={{background:'#7a7b97',paddingLeft:' 1.5rem',paddingRight:'1.5rem'}}><b> About</b></Button>
+                    <       Button className="about-btn" style={{paddingLeft:' 1.5rem',paddingRight:'1.5rem'}}><b> About</b></Button>
                         </NavLink>
                 </Nav.Item>
                 {/* <Nav.Item>
@@ -123,11 +123,11 @@ function AppNavbar(){
         return(
             <>
             <div  style={{color:'#000',textDecoration:'none'}}>
-            <Navbar expand="sm"> 
+            <Navbar expand="sm" bg="dark"> 
                 <Container>
                     <Navbar.Brand ><NavLink to='/'><div className="nav-brand"><img alt="alt" className="nav-logo" src={logo}/><div className="brand-text"><span><b>Ticket</b></span><b>TrackerZ</b></div></div></NavLink></Navbar.Brand>
-                    <Navbar.Toggle onClick={ toggle}/>
-                    <Navbar.Collapse className="mainNavCollapse" isopen={ isopen} navbar>
+                    <Navbar.Toggle bg='light' variant='dark' onClick={ toggle}/>
+                    <Navbar.Collapse  className="mainNavCollapse" isopen={ isopen} navbar>
                         <NavLink  style={{marginLeft:"auto"}} to='/'><b>Home</b></NavLink>
                         {/* <NavLink  href='/admin/dashboard'><b>Dashboard</b></NavLink> */}
                         {/* <NavLink className="ml-3 mr-3" to='/issues'><b>Issues</b></NavLink> */}

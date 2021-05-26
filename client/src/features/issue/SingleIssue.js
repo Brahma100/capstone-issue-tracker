@@ -88,13 +88,13 @@ const SingleIssue=(props)=>{
                             <Row style={{display:'flex',fontSize:'12px'}}>
                             </Row>
                              <Row style={{fontSize:"12px",paddingBottom:'.2rem'}}>
-                               <div style={{display: 'flex'}}> <h7 style={{color:'gray',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faShoppingBag}/><b style={{marginRight:'.2rem'}}>Status:</b></h7><span style={{color:issue.Status.localeCompare("Open")===0?'#1bc943':'#f83245',borderRadius:'5px',border:issue.Status.localeCompare("Open")===0?'1px solid #1bc943':' 1px solid #f83245',background:issue.stock>=10?'#e5f9ed':'#fff5f6',padding:'.0rem .3rem'}}><b>{issue.Status}</b></span>
+                               <div style={{display: 'flex'}}> <h7 style={{color:'#dbdbdb',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faShoppingBag}/><b style={{marginRight:'.2rem'}}>Status:</b></h7><span style={{color:issue.Status.localeCompare("Open")===0?'#1bc943':'#f83245',borderRadius:'5px',border:issue.Status.localeCompare("Open")===0?'1px solid #1bc943':' 1px solid #f83245',background:issue.stock>=10?'#e5f9ed':'#fff5f6',padding:'.0rem .3rem'}}><b>{issue.Status}</b></span>
                             </div></Row>
                             <Row style={{fontSize:"12px",paddingBottom:'.2rem'}}>
-                               <div style={{display:'flex'}}> <h7 style={{color:'gray',display:'flex',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faUser}/><b style={{marginRight:'.2rem'}}>Raised By:</b></h7><span><b>{issue.user?issue.user.fname:"Unknown"}</b></span>
+                               <div style={{display:'flex'}}> <h7 style={{color:'#dbdbdb',display:'flex',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faUser}/><b style={{marginRight:'.2rem'}}>Raised By:</b></h7><span><b>{issue.user?issue.user.fname:"Unknown"}</b></span>
                            </div> </Row>
                             <Row style={{display:'flex',alignItems:'center', fontSize:"12px"}}>
-                                <h7 style={{display:'flex',color:'gray',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faCalendarAlt}/><b style={{marginRight:'.2rem'}}>Created Date:</b><span>{issue.date}</span></h7>
+                                <h7 style={{display:'flex',color:'#dbdbdb',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faCalendarAlt}/><b style={{marginRight:'.2rem'}}>Created Date:</b><span>{issue.date}</span></h7>
                             </Row> 
                         </Card.Subtitle>
                        
@@ -144,22 +144,22 @@ const SingleIssue=(props)=>{
                                 <Card.Body style={{fontSize:'12px'}}>
                                            
                                                 <Row>
-                                                    <h8><b style={{color:'#3c44b1'}}>Name:</b> <span style={{fontWeight:'bold',color:'gray'}}>{ user.fname+" "+user.lname}</span></h8>
+                                                    <h8><b style={{color:'#ff7a18'}}>Name:</b> <span style={{fontWeight:'bold',color:'#dbdbdb'}}>{ user.fname+" "+user.lname}</span></h8>
                                                 </Row>
                                                 <Row>
-                                                    <h8><b style={{color:'#3c44b1'}}>Email:</b> <span style={{fontWeight:'bold',color:'gray'}}>{ user.email}</span></h8>
+                                                    <h8><b style={{color:'#ff7a18'}}>Email:</b> <span style={{fontWeight:'bold',color:'#dbdbdb'}}>{ user.email}</span></h8>
                                                 </Row>
                                                 <Row>
-                                                    <h8><b style={{color:'#3c44b1'}}>City:</b> <span style={{fontWeight:'bold',color:'gray'}}>{ user.city}</span></h8>
+                                                    <h8><b style={{color:'#ff7a18'}}>City:</b> <span style={{fontWeight:'bold',color:'#dbdbdb'}}>{ user.city}</span></h8>
                                                 </Row>
                                                 <Row>
-                                                    <h8><b style={{color:'#3c44b1'}}>Postal:</b> <span style={{fontWeight:'bold',color:'gray'}}>{ user.postal}</span></h8>
+                                                    <h8><b style={{color:'#ff7a18'}}>Postal:</b> <span style={{fontWeight:'bold',color:'#dbdbdb'}}>{ user.postal}</span></h8>
                                                 </Row>
                                                 <Row>
-                                                    <h8><b style={{color:'#3c44b1'}}>Country:</b> <span style={{fontWeight:'bold',color:'gray'}}>{ user.country}</span></h8>
+                                                    <h8><b style={{color:'#ff7a18'}}>Country:</b> <span style={{fontWeight:'bold',color:'#dbdbdb'}}>{ user.country}</span></h8>
                                                 </Row>
                                                 <Row>
-                                                    <h8><b style={{color:'#3c44b1'}}>Added Date:</b> <span style={{fontWeight:'bold',color:'gray'}}>{ user.date}</span></h8>
+                                                    <h8><b style={{color:'#ff7a18'}}>Added Date:</b> <span style={{fontWeight:'bold',color:'#dbdbdb'}}>{ user.date}</span></h8>
                                                 </Row>
                                            
                                 </Card.Body>

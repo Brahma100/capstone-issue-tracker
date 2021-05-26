@@ -7,7 +7,7 @@ import { Container } from "react-bootstrap";
 class Footer extends Component {
   render() {
     return (
-      <footer style={{borderTop:'3px solid #ebeced',paddingTop:'10px'}} className="footer">
+      <footer style={{borderTop:'2px solid rgb(39, 39, 39)' ,paddingTop:'10px'}} className="footer">
         <Container fluid>
           <nav className="pull-left">
             <ul >

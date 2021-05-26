@@ -5,16 +5,20 @@ import './Issues.css'
 import {NavLink, Prompt, withRouter} from 'react-router-dom';
 import back from '../../assets/images/back.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar, faTrashAlt, faUser ,faShoppingBag,faCalendarAlt,faSearch,faFilter,  faChevronCircleDown, faChevronCircleRight, faArrowAltCircleUp, faArrowAltCircleDown, faEdit, faPlus} from '@fortawesome/free-solid-svg-icons';
+import { faStar, faTrashAlt, faUser ,faShoppingBag,faCalendarAlt,faSearch,faFilter,  faChevronCircleDown, faChevronCircleRight, faArrowAltCircleUp, faArrowAltCircleDown, faEdit, faPlus, faExclamationTriangle, faCubes, faThumbtack} from '@fortawesome/free-solid-svg-icons';
 import { deleteIssueAsync, loadIssueAsync } from './issueSlice';
 import {selectIssues} from './issueSlice';
-import { selectAuth } from '../user/userSlice';
+import { selectAuth, selectAuthError } from '../user/userSlice';
+import NotificationSystem from 'react-notification-system';
+import ChartistGraph from "react-chartist";
+import Chart_card from '../../components/Card/Chart_card';
+import TrendingIssues from './TrendingIssues';
 
 
 
 const styles = {
   mediaItem: {
-    border: "1px solid gray",
+    border: "1px solid #b1b1b1",
     backgroundColor: "#f5f5f5",
 
   },
@@ -27,7 +31,17 @@ const styles = {
 function Issues(){
   const dispatch=useDispatch();
 
-
+  const createLegend=(json)=> {
+    var legend = [];
+    for (var i = 0; i < json["names"].length; i++) {
+      var type = "fa fa-circle text-" + json["types"][i];
+      legend.push(<i className={type} key={i} />);
+      legend.push(" ");
+      legend.push(json["names"][i]);
+    }
+    return legend;
+  }
+  
   useEffect(()=>{
     dispatch(loadIssueAsync());
   },[])
@@ -49,8 +63,34 @@ function Issues(){
   const [currentPage,setCurrentPage]=useState(1);
   const [q,setQ]=useState("");
   const [isBlocked,setIsBlocked]=useState(false);
+  const notificationSystem = React.createRef();
+  const err=useSelector(selectAuthError);
   // const [issues,setIssues]=useState(null);
 
+  const  legendPie = {
+    names: ["High", "Trending", "Zero","Low"],
+    types: ["success", "primary","danger", "info"]
+  };
+var highStock=10;
+var trending=5;
+var OutOfStock=2;
+var lowStock=1;
+  var total=highStock+ trending+ OutOfStock+lowStock;
+// const total=100
+    var dataPie1 = {
+      labels: [parseInt(highStock/total*100)+"%", parseInt(trending/total*100)+"%",parseInt(OutOfStock/total*100)+"%",parseInt(lowStock/total*100)+"%"],
+      series: [highStock, trending, OutOfStock,lowStock]
+    };
+  const addNotification = msg => {
+    const notification = notificationSystem.current;
+    notification.addNotification({
+      title:<div><FontAwesomeIcon icon={faExclamationTriangle}/> Hurray, Now You Got Full Access</div>,
+      message:  msg,
+      level: 'success',
+      position:'tc',
+      autoDismiss:5
+    });
+  };
 
  const handleClick=(event)=> {
 console.log("Id:",event.target.id);
@@ -74,22 +114,13 @@ setCurrentPage(Number(event.target.id));
 
 useEffect(
   function(e){
-
-    // var myobj = document.getElementById("bodyClick");
-    // if(myobj!==null){
-    // document.documentElement.classList.toggle("nav-open");
-    // myobj.remove();}
-    
-
-
-  //  getItems();
-  //  getCategories();
-      
-    //  setState({products:  products})
+    // if(isAuthenticated && !err){
+    //   addNotification("Login Success");
+    // }
 
   }
 
-,[]);
+,[isAuthenticated,err]);
 
   const handleView=()=>{
     if(!  isAuthenticated){
@@ -108,6 +139,7 @@ useEffect(
      
 
       const paginaton=(products)=>{
+        if(products.length===0)return [];
         const indexOfLastTodo = currentPage * productsPerPage;
         const indexOfFirstTodo = indexOfLastTodo - productsPerPage;
         return products.length>0 && products.slice(indexOfFirstTodo, indexOfLastTodo);
@@ -181,8 +213,9 @@ var user=  user;
 
         return (
             <>
-
-<div style={{ backgroundImage: `url("${back}")`,backgroundRepeat:'no-repeat'}}>
+             <NotificationSystem ref={notificationSystem} />
+<div>
+{/* <div> style={{ backgroundImage: `url("${back}")`,backgroundRepeat:'no-repeat'}}> */}
       
     {/* <Prompt
                 when={  isBlocked}
@@ -203,7 +236,8 @@ var user=  user;
     
     <Container  style={{paddingTop:'2rem',width:'100%'}}>
 
-          <div  className="content" >
+          <div  className="content">
+
           {isAuthenticated?null:
           <Prompt message={(location, action) => {
             if (action === 'POP') {
@@ -214,7 +248,37 @@ var user=  user;
               ? `You Have to Login to Edit Issue`
               : true 
           }}/>
+
           }
+
+          {/* <Container> */}
+            <Row>
+              <Col md={8}>
+              <TrendingIssues/>
+              </Col>
+              <Col md={4}>
+
+              <Chart_card
+              icon={faThumbtack}
+                statsIcon="fa fa-clock-o"
+                title="Issue Chart"
+                category="Last Campaign Performance"
+                stats="Updated Now"
+                content={
+                  <div
+                    id="chartPreferences"
+                    className="ct-chart ct-perfect-fourth"
+                  >
+                    <ChartistGraph data={dataPie1} type="Pie"  />
+                  </div>
+                }
+                legend={
+                  <div className="legend">{createLegend(legendPie)}</div>
+                }
+              />
+              </Col>
+            </Row>
+          {/* </Container> */}
         
 
           { issues.length===0?<><Spinner style={{ width: '3rem', height: '3rem', color:'green' }} type="grow" /></>
@@ -224,7 +288,7 @@ var user=  user;
                   
                   <Row style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                   
-                          <Col sm={4} style={{display:'flex',alignItems:'center', width:'70%',color:'gray',paddingLeft:'.4rem',borderRadius:'20px',border:'1px solid gray',margin:'5px'}}>
+                          <Col sm={4} style={{display:'flex',alignItems:'center', width:'70%',color:'#b1b1b1',paddingLeft:'.4rem',borderRadius:'20px',border:'1px solid #b1b1b1',margin:'5px'}}>
                                     <FontAwesomeIcon icon={faSearch}/>
                                     <input onChange={(e)=>{ setQ(e.target.value)}} style={{width:'90%',border:'none',padding:'.2rem 0 .2rem.5rem',color:'black'}} placeholder="Search Issues" type="text"/>
                                     {isAuthenticated?
@@ -261,7 +325,7 @@ var user=  user;
                           :null} */}
                           <Col style={{}} sm={2} className='filter-icon'>
                             
-                                  <DropdownButton  title={<FontAwesomeIcon icon={faFilter} />} className='filter-button' style={{borderRadius:'50%',background:'transparent',color:'#3c44b1',border:'none',boxShadow:'none'}}> 
+                                  <DropdownButton  title={<FontAwesomeIcon icon={faFilter} />} className='filter-button' style={{borderRadius:'50%',background:'transparent',color:'#3c44b1 ',border:'none',boxShadow:'none'}}> 
                                         
                                         {/* <Row > */}
                                         <div >
@@ -276,9 +340,9 @@ var user=  user;
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="0">
                                 <Card.Body >
-                                  <div className="range-input" ><span style={{color:'gray'}}><b>Min:</b></span><input  type='number' value={  minRange} onChange={(e)=> setState({minRange:e.target.value})}/>
+                                  <div className="range-input" ><span style={{color:'#b1b1b1'}}><b>Min:</b></span><input  type='number' value={  minRange} onChange={(e)=> setState({minRange:e.target.value})}/>
                                   </div>
-                                  <div className="range-input"><span style={{color:'gray'}} ><b>Max:</b></span><input  type='number' value={  maxRange} onChange={(e)=> setState({maxRange:e.target.value})}/>
+                                  <div className="range-input"><span style={{color:'#b1b1b1'}} ><b>Max:</b></span><input  type='number' value={  maxRange} onChange={(e)=> setState({maxRange:e.target.value})}/>
                                 </div>
                                 </Card.Body>
                                 </Accordion.Collapse>
@@ -288,8 +352,8 @@ var user=  user;
                             <Accordion defaultActiveKey="1">
 
                             <Card>
-                            <Accordion.Toggle  style={{background:!  open2?"#fff":'#f3f3f3'}} eventKey="1" onClick={()=> setOpen2(!open2)}>
-                                    <div className="accordion-header"><h6>Customize Columns</h6><FontAwesomeIcon style={{color:  open2?"red":"#3b44c1"}} icon={  open2?faChevronCircleRight:faChevronCircleDown}/></div>
+                            <Accordion.Toggle  style={{background:!  open2?"":'',color:"white"}} eventKey="1" onClick={()=> setOpen2(!open2)}>
+                                    <div className="accordion-header"><h6>Customize Columns</h6><FontAwesomeIcon style={{color:  open2?"#d43434":"#22d522d4"}} icon={  open2?faChevronCircleRight:faChevronCircleDown}/></div>
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="1">
                                 <Card.Body>
@@ -347,8 +411,8 @@ var user=  user;
                                 <Card.Body>
                                     <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around', alignItems:'center'}}>
                                         
-                                        <div onClick={()=>{ setState(prev=>({isAscending:!prev.isAscending}))}} className="asending" style={{border:  isAscending?'1px solid green':'',background:  isAscending?' rgb(194, 255, 194)':'',marginBottom:'.6rem',display:'flex',alignItems:'center',cursor:'pointer'}}><a><FontAwesomeIcon style={{color:!  isDecending?'#3b44c1':'gray'}} icon={faArrowAltCircleUp}/><h7>Ascending</h7></a></div>
-                                        <div onClick={()=>{ setState(prev=>({isDecending:!prev.isDecending}))}} className="desending" style={{border:  isDecending?'1px solid red':'',background:  isDecending?' rgb(255, 213, 213)':'',display:'flex',alignItems:'center',cursor:'pointer'}}><FontAwesomeIcon style={{color:!  isAscending?'red':'gray'}} icon={faArrowAltCircleDown}/><h7>Decending</h7></div>
+                                        <div onClick={()=>{ setState(prev=>({isAscending:!prev.isAscending}))}} className="asending" style={{border:  isAscending?'1px solid green':'',background:  isAscending?' rgb(194, 255, 194)':'',marginBottom:'.6rem',display:'flex',alignItems:'center',cursor:'pointer'}}><a><FontAwesomeIcon style={{color:!  isDecending?'#3b44c1':'#b1b1b1'}} icon={faArrowAltCircleUp}/><h7>Ascending</h7></a></div>
+                                        <div onClick={()=>{ setState(prev=>({isDecending:!prev.isDecending}))}} className="desending" style={{border:  isDecending?'1px solid red':'',background:  isDecending?' rgb(255, 213, 213)':'',display:'flex',alignItems:'center',cursor:'pointer'}}><FontAwesomeIcon style={{color:!  isAscending?'red':'#b1b1b1'}} icon={faArrowAltCircleDown}/><h7>Decending</h7></div>
                                     </div>
                                 </Card.Body>
                                 </Accordion.Collapse>
@@ -397,13 +461,13 @@ var user=  user;
                             <Row style={{display:'flex',fontSize:'12px'}}>
                             </Row>
                              <Row style={{fontSize:"12px",paddingBottom:'.2rem'}}>
-                               <div style={{display:  isStatus?'flex':'none'}}> <h7 style={{color:'gray',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faShoppingBag}/><b style={{marginRight:'.2rem'}}>Status:</b></h7><span style={{color:issue.Status.localeCompare("Open")===0?'#1bc943':'#f83245',borderRadius:'5px',border:issue.Status.localeCompare("Open")===0?'1px solid #1bc943':' 1px solid #f83245',background:issue.stock>=10?'#e5f9ed':'#fff5f6',padding:'.0rem .3rem'}}><b>{issue.Status}</b></span>
+                               <div style={{display:  isStatus?'flex':'none'}}> <h7 style={{color:'#b1b1b1',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faShoppingBag}/><b style={{marginRight:'.2rem'}}>Status:</b></h7><span style={{color:issue.Status.localeCompare("Open")===0?'#1bc943':'rgb(252 102 116) ',borderRadius:'5px',border:issue.Status.localeCompare("Open")===0?'1px solid #1bc943':' 1px solid #f83245',padding:'.0rem .3rem'}}><b>{issue.Status}</b></span>
                             </div></Row>
                             <Row style={{fontSize:"12px",paddingBottom:'.2rem'}}>
-                               <div style={{display:  isAddedBy?'flex':'none'}}> <h7 style={{color:'gray',display:'flex',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faUser}/><b style={{marginRight:'.2rem'}}>Raised By:</b></h7><span><b>{issue.user?issue.user.fname:"Unknown"}</b></span>
+                               <div style={{display:  isAddedBy?'flex':'none'}}> <h7 style={{color:'#b1b1b1',display:'flex',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faUser}/><b style={{marginRight:'.2rem'}}>Raised By:</b></h7><span><b>{issue.user?issue.user.fname:"Unknown"}</b></span>
                            </div> </Row>
                             <Row style={{display:'flex',alignItems:'center', fontSize:"12px"}}>
-                                <h7 style={{display:isDate?'flex':'none',color:'gray',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faCalendarAlt}/><b style={{marginRight:'.2rem'}}>Created Date:</b><span>{issue.date}</span></h7>
+                                <h7 style={{display:isDate?'flex':'none',color:'#b1b1b1',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faCalendarAlt}/><b style={{marginRight:'.2rem'}}>Created Date:</b><span>{issue.date}</span></h7>
                             </Row> 
                         </Card.Subtitle>
                        

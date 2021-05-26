@@ -80,10 +80,16 @@
     border: none;
     outline: none;
     /* background-color: #f4f5fd; */
-    background-color: #fff;
+    box-shadow: -2rem 0 3rem -2rem #000;
+    background: linear-gradient(
+  85deg
+  ,#434343,#262626);
 }
 .card>button:hover{
-    background-color: #f3f3f3;
+    box-shadow: -2rem 0 3rem -2rem #000;
+    background: linear-gradient(
+  85deg
+  ,#434343,#262626);
 }
 .accordion>.card{
     margin-bottom: 0px;
@@ -133,7 +139,7 @@ input{
 p{
     margin: 0px;
     text-align: left;
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 .card-header{
     height:60px;
@@ -221,7 +227,10 @@ p{
 .bottom-button{
     margin-left: 0rem;
 padding: .5rem;
-background: #f8f9ff;
+/* box-shadow: -2rem 0 3rem -2rem #000; */
+background: linear-gradient(
+85deg
+,#434343,#262626);
 display: flex;
 
 

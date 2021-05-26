@@ -33,7 +33,7 @@ nav{
     font-size: .62917rem;
     opacity: .7;
     padding: 4px 0 0 0;
-    color: #070919;
+    color: white;
 }
 .brand-text1>span{
     font-weight: bold;
@@ -54,6 +54,17 @@ nav{
     font-size: 1rem;
     font-weight: 600;
     /* text-transform: lowercase; */
+}
+.about-btn{
+
+    color: #ec8129;
+    background: linear-gradient(
+        85deg
+        ,#434343,#262626) !important;
+}
+.about-btn:hover{
+    color: white !important;
+    background:#ec8129 !important;
 }
 .brand-text>b:hover{
     color: #ec8129;
@@ -107,6 +118,11 @@ background: transparent;
     width: 210px;
     
 }
+.dropdown-list-nav:hover{
+    background-color: rgb(143, 143, 143);
+    /* width: 210px; */
+    
+}
 .dropdown-list-item-logout:hover{
     color: #e73a3a;
     border-radius: 30px;
@@ -118,7 +134,7 @@ background: transparent;
     border-radius: 30px;
     padding:6px 15px;
     width: 170px;
-    color: #7a7b97;
+    color: #c0c0c0;
  
 }
 .dropdown-list-item:hover{
@@ -157,8 +173,8 @@ background: transparent;
   
 .status-overlay {
     box-shadow:  0 0 10px 4px rgb(255, 255, 255);
-      -moz-box-shadow: 0 0 10px  4px rgb(255, 255, 255);
-      -webkit-box-shadow: 0 0 10px 4px rgb(255, 255, 255);
+      -moz-box-shadow: 0 0 10px  4px rgb(170, 170, 170);
+      -webkit-box-shadow: 0 0 10px 4px rgb(60, 182, 111);
       -o-box-shadow: 0 0 10px 4px rgb(255, 255, 255);
     background-color: #67e96b;
     position: absolute;

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import {Field, Formik} from 'formik';
 import * as yup from 'yup';
 import {useDispatch,useSelector} from 'react-redux';
-import {selectUser} from '../user/userSlice';
+import {selectAuth, selectUser} from '../user/userSlice';
 import {  Prompt } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faIndustry, faShoppingBag, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -32,7 +32,7 @@ const userinfo= useSelector(selectUser);
   const [Issue,setIssue]=useState(issue.Issue); 
   const [Severity,setSeverity]=useState(issue.Severity); 
   const [Status,setStatus]=useState(issue.Status); 
- 
+  const isAuthenticated=useSelector(selectAuth);
 
 //   state={
 //     modal:false,   // modal for adding item is false initially
@@ -62,6 +62,17 @@ useEffect(
 ,[]);
 
 
+
+
+useEffect(()=>{
+      
+  if(!isAuthenticated){
+      console.log("From Product to Home");
+      props.history.push('/')
+    
+     }
+
+},[props,isAuthenticated]);
 
 // componentDidUpdate(prevProps){
 

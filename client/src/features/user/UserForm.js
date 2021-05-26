@@ -3,7 +3,7 @@ import NotificationSystem from 'react-notification-system';
 // import './UserForm.css'
 import { Prompt, withRouter} from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
-import { addUserAsync, loadUserAsync,loginUserAsync,selectAuth,selectUser } from './userSlice';
+import { addUserAsync, loadUserAsync,loginUserAsync,selectAuth,selectAuthError,selectUser } from './userSlice';
 import back from '../../assets/images/back.jpg'
 
 import banner from '../../assets/images/LoginSVG.png' 
@@ -45,6 +45,7 @@ const schemaRegister = yup.object({
 function UserForm(props){  
 
   const dispatch=useDispatch();
+  const err=useSelector(selectAuthError);
   const user=useSelector(selectUser);
   const isAuthenticated=useSelector(selectAuth);
     const notificationSystem = React.createRef();
@@ -58,6 +59,7 @@ function UserForm(props){
     const [startRender,setStartRender]=useState(true);
     const [isBlocking,setIsBlocking]=useState(true);
     const [remember,setRemember]=useState(true);
+    const [msg,setMsg]=useState(null);
 
  
 
@@ -72,15 +74,16 @@ function UserForm(props){
       });
     };
 
+
 useEffect(
   async function(){
     // console.log("Async loadinng")
 
-    // if(props.history.location.state!=='button'){
-    // let authenticate = window.confirm("You Need To Login To Get Full Access of ShopperZ")
-    // if(!authenticate){
-    //           props.history.push('/')
-    // }}
+    if(props.history.location.state!=='button'){
+    let authenticate = window.confirm("You Need To Login To Get Full Access of ShopperZ")
+    if(!authenticate){
+              props.history.push('/')
+    }}
 
 
     let response=await fetch(`https://geolocation-db.com/json/`)
@@ -98,6 +101,7 @@ useEffect(
 useEffect(
   
   function(){
+    setMsg(null);
       dispatch(loadUserAsync());
          console.log("Action Login Page:",  props.history);
          if( props.history.action==='POP')
@@ -127,6 +131,17 @@ useEffect(
   
   function(prevProps){
     dispatch(loadUserAsync());
+          if(err && err.length>0){
+            setMsg(err);
+            if(msg)
+            addNotification(msg);
+          }
+          else{
+            setMsg(null);
+
+            // addNotification1("Login Success");
+          }
+          // setMsg(null);
         // if(error!==prevProps.error){
         //     if(error.id==="REGISTER_FAIL"){
         //           setState({msg:error.msg.msg});
@@ -149,14 +164,14 @@ useEffect(
         // }
         
 
-        dispatch(loadUserAsync());
+        // dispatch(loadUserAsync());
        if(isAuthenticated){
          console.log("update Component");
           props.history.push('/')
-        //   props.loginModalOpen(true);
+        
        }
       }
-,[dispatch,isAuthenticated,user])
+,[dispatch,isAuthenticated,user,err,msg])
 
     const handleSignIn=()=>{
         console.log("Sign In Toggle Called", signIn);
@@ -168,10 +183,11 @@ useEffect(
            
            <>
 
-           <NotificationSystem ref={  notificationSystem} />
+           <NotificationSystem ref={notificationSystem} />
            {!startRender?<Loading/>:
           <div>
-<div className="App" style={{alignItems:'center', backgroundImage: `url("${back}")`,backgroundRepeat:'no-repeat'}} >
+<div className="App">
+   {/* style={{alignItems:'center', backgroundImage: `url("${back}")`,backgroundRepeat:'no-repeat'}} > */}
       
            
             <Container>
@@ -213,7 +229,7 @@ useEffect(
 
       }}
       onSubmit={(values)=>{ 
-
+        // setMsg(null);
         const {fname,lname,email,password}=values;
         // let ip= ip;
         const newUser={
@@ -442,6 +458,7 @@ useEffect(
 
                         }}
                         onSubmit={(values)=>{ 
+                          // setMsg(null);
                           setIsBlocking(false);
                             // setState({isBlocking:false});
                           console.log("Update:", isBlocking);
@@ -452,7 +469,9 @@ useEffect(
                         }
                           dispatch(loginUserAsync(user));
                           // setTimeout(()=>{
-                          //     dispatch(loadUserAsync());
+                          //     if(err){
+                          //       addNotification(err);
+                          //     }
                           // },3000)
                         }
                         }

@@ -84,9 +84,9 @@ server.get('/issues',(req,res)=>{
 
 
 server.post('/add_issue', (req, res) => {
-  const {Issue,Severity,Status,user} = req.body;
+  const {Issue,Description,Severity,Status,user} = req.body;
 
-  if(!Issue || !Severity || !Status) return res.status(400).json({msg:'Please Enter all Fields'});
+  if(!Issue || !Description ||  !Severity || !Status) return res.status(400).json({msg:'Please Enter all Fields'});
   // Check for Existence of Registering Product
   if(CheckIssue({Issue}) === true) {  
       return res.status(400).json({msg:'Issue Already Exits'});
@@ -103,12 +103,12 @@ fs.readFile("./Json_DataBase_Files/issues.json", (err, data) => {
       var dateTime = require('node-datetime');
       var dt = dateTime.create();
       var date = dt.format('Y-m-d H:M:S');
-      var rating="";
+     
       // Get current issues data
       var data = JSON.parse(data.toString());
       const id=crypto.randomBytes(12).toString('hex');
           
-                    data.issues.push({id: id,Issue:Issue, Severity: Severity,Status:Status,user:user,date:date,rank:0}); //add some data
+                    data.issues.push({id: id,Issue:Issue,Description:Description, Severity: Severity,Status:Status,user:user,date:date,rank:0,editUser:{},r_date:""}); //add some data
                     console.log("Push Pass",data);
                     var writeData = fs.writeFile("./Json_DataBase_Files/issues.json", JSON.stringify(data), (err, result) => {  // WRITE
                       if (err) {
@@ -128,7 +128,8 @@ fs.readFile("./Json_DataBase_Files/issues.json", (err, data) => {
                             user:user,
                             date:date,
                             rank:0,
-                            
+                            editUser:{},
+                            r_date:""
                             }
               
           );
@@ -141,8 +142,8 @@ fs.readFile("./Json_DataBase_Files/issues.json", (err, data) => {
 server.post("/update_issue",function(req,res){  
   // req==request from client || res=== Response that would be from Server
 
-  const {id,Issue,Severity,Status,user} = req.body;
-console.log(id,Issue,Severity,Status,user);
+  const {id,Issue,Description,Severity,Status,user} = req.body;
+console.log(id,Issue,Description,Severity,Status,user);
 if(!Issue || !Severity || !Status) return res.status(400).json({msg:'Please Enter all Fields'});
 // Check for Existence of Registering User
 

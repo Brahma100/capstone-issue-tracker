@@ -2,14 +2,15 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import UserApi from './userApi';
 
 const initialState={
-    // token:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OSwiZW1haWwiOiIyQGEuYSIsImlhdCI6MTYyMDIxNzA1NCwiZXhwIjoxNjIwMjIwNjU0fQ.7UKw_c4ZbDP1SJ3OFSJhfiipjbjgdqk2DyCI6w64xuo",
-    token:localStorage.getItem('token'),
+   token:localStorage.getItem('token'),
+    err:null,
     isLoading:false,
     isLoaded:false,
     isAuthenticated:false,
     isUpdate:null,
     userinfo:null,
-    isBlocked:false,
+    isBlocked:false
+   
 };
 
 
@@ -40,16 +41,13 @@ export const addUserAsync=createAsyncThunk(
 export const loginUserAsync=createAsyncThunk(
     'user/loginUser',
     async (user,{rejectWithValue})=>{
-        // try{
+       
 
             const res=await UserApi.loginUser(user);
-
+            
             return res;
 
-        // }
-        // catch{
-        //     return rejectWithValue(error);
-        // }
+        
     }
 )
 export const logoutUserAsync=createAsyncThunk(
@@ -79,6 +77,7 @@ export const userSlice=createSlice({
             state.isLoading=true;
             state.isLoaded=false;
             state.isAuthenticated=false;
+            state.err=null;
         },
         [loadUserAsync.fulfilled]:(state,action)=>{
             // state.token=localStorage.getItem('token');
@@ -87,6 +86,7 @@ export const userSlice=createSlice({
             state.isLoaded=true;
             state.isAuthenticated=true;
             state.userinfo=action.payload;
+            state.err=null;
             // console.log("UserAction",action);
         },
         [loadUserAsync.rejected]:(state,action)=>{
@@ -94,29 +94,34 @@ export const userSlice=createSlice({
             state.isLoading=false;
             state.isLoaded=false;
             state.isAuthenticated=false;
+            state.err=null;
         },
         [loginUserAsync.pending]:(state,action)=>{
             // console.log("Login Pending");
             state.isLoading=true;
             state.isLoaded=false;
             state.isAuthenticated=false;
+            state.err=null;
         },
         [loginUserAsync.fulfilled]:(state,action)=>{
-            // console.log("Login Success");
+            console.log("Login Success");
             localStorage.setItem('token',action.payload.token);
             state.token=localStorage.getItem('token');
             state.isLoading=false;
             state.isLoaded=true;
             state.isAuthenticated=true;
             state.userinfo=action.payload;
-            
+            console.log("Login Success",action.payload.err);
+            state.err=null;
             // console.log("UserAction",action);
         },
         [loginUserAsync.rejected]:(state,action)=>{
-            // console.log("Login Failed");
+            console.log("Login Failed");
             state.isLoading=false;
             state.isLoaded=false;
             state.isAuthenticated=false;
+            state.err=action.payload.response.data.msg;
+            console.log("Login Failed",action.payload.response.data.msg);
         },
         [addUserAsync.pending]:(state,action)=>{
             // console.log("Register Pending");
@@ -167,6 +172,8 @@ export const userSlice=createSlice({
 })
 
 export const {logout} =userSlice.actions;
+
+export const selectAuthError=(state)=>state.user.err;
 export const selectAuth=(state)=>state.user.isAuthenticated;
 export const selectUser=(state)=>state.user.userinfo;
 
