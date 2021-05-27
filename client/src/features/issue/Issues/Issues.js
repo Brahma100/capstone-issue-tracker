@@ -3,16 +3,15 @@ import { OverlayTrigger,Tooltip,Accordion,DropdownButton, Spinner, Row, Containe
 import { useDispatch, useSelector} from 'react-redux';
 import './Issues.css'
 import {NavLink, Prompt, withRouter} from 'react-router-dom';
-import back from '../../assets/images/back.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faTrashAlt, faUser ,faShoppingBag,faCalendarAlt,faSearch,faFilter,  faChevronCircleDown, faChevronCircleRight, faArrowAltCircleUp, faArrowAltCircleDown, faEdit, faPlus, faExclamationTriangle, faCubes, faThumbtack} from '@fortawesome/free-solid-svg-icons';
-import { deleteIssueAsync, loadIssueAsync } from './issueSlice';
-import {selectIssues} from './issueSlice';
-import { selectAuth, selectAuthError } from '../user/userSlice';
+import { deleteIssueAsync, loadIssueAsync } from '../issueSlice';
+import {selectIssues} from '../issueSlice';
+import { selectAuth, selectAuthError } from '../../user/userSlice';
 import NotificationSystem from 'react-notification-system';
 import ChartistGraph from "react-chartist";
-import Chart_card from '../../components/Card/Chart_card';
-import TrendingIssues from './TrendingIssues';
+import Chart_card from '../../../components/Card/Chart_card';
+import TrendingIssues from '../TrendingIssues';
 
 
 
@@ -88,7 +87,7 @@ for(var i=0;i<issues.length;i++)
   inProgress++;
 }
 var total=issues.length;
-console.log(open,closed,inProgress,total);
+// console.log(open,closed,inProgress,total);
 
     var dataPie1 = {
       labels: [parseInt(closed/total*100)+"%", parseInt(inProgress/total*100)+"%",parseInt(open/total*100)+"%"],
@@ -108,7 +107,7 @@ console.log(open,closed,inProgress,total);
   };
 
  const handleClick=(event)=> {
-console.log("Id:",event.target.id);
+// console.log("Id:",event.target.id);
 setCurrentPage(Number(event.target.id));
     //  setState({
     //   currentPage: Number(event.target.id)
@@ -228,7 +227,7 @@ var user=  user;
 
         return (
             <>
-             <NotificationSystem ref={notificationSystem} />
+             <NotificationSystem role="notification" ref={notificationSystem} />
 <div>
 {/* <div> style={{ backgroundImage: `url("${back}")`,backgroundRepeat:'no-repeat'}}> */}
       
@@ -256,7 +255,7 @@ var user=  user;
           {isAuthenticated?null:
           <Prompt message={(location, action) => {
             if (action === 'POP') {
-              console.log("Backing up...")
+              // console.log("Backing up...")
             }
 
             return location.pathname.startsWith("/updateIssue")
@@ -545,7 +544,7 @@ var user=  user;
            
             
          </div>
-         <div style={{justifyContent:'space-around',display:'flex',alignItems:'center'}}>
+         <div role="pagination" style={{justifyContent:'space-around',display:'flex',alignItems:'center'}}>
          <Pagination >
            {renderPageNumbers}
          </Pagination>

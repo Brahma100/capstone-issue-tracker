@@ -301,7 +301,7 @@ useEffect(
                 </InputGroup.Prepend>
                 <Form.Control
                   type="text"
-                  placeholder="Email ID"
+                  placeholder="Enter Email ID"
                   aria-describedby="inputGroupPrepend"
                   name="email"
                   value={values.email}

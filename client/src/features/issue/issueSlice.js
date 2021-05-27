@@ -12,7 +12,7 @@ export const loadIssueAsync=createAsyncThunk(
     'issue/loadIssue',
     async ()=>{
         const res=await issueApi.loadIssue();
-        // console.log("result thunk........Load",res);
+      
         return res;
     }
 )
@@ -20,22 +20,17 @@ export const loadIssueAsync=createAsyncThunk(
 export const addIssueAsync=createAsyncThunk(
     'issue/addIssue',
     async (issue,{rejectWithValue})=>{
-        // try{
-            // console.log("AddUserAsync...........",issue);
+        
             const res=await issueApi.addIssue(issue);
-            // console.log("UsereSLice Register data :",res)
+            
             return res;
-        // }
-        // catch{
-        //     return rejectWithValue(error);
-        // }
+       
     }
 )
 export const editIssueAsync=createAsyncThunk(
     'issue/editIssue',
     async (issue,{rejectWithValue})=>{
-        // try{
-            // console.log("AddUserAsync...........",issue);
+       
             const res=await issueApi.editIssue(issue);
             console.log("EDIT Issue1...........",res);
 
@@ -43,25 +38,17 @@ export const editIssueAsync=createAsyncThunk(
                 return rejectWithValue(res);
               }
               return res;
-        // }
-        // catch{
-        //     return rejectWithValue(error);
-        // }
+        
     }
 )
 export const deleteIssueAsync=createAsyncThunk(
     'issue/deleteIssue',
     async (id,{rejectWithValue})=>{
-        // try{
-
-            // console.log("AddUserAsync...........",id);
+       
             const res=await issueApi.deleteIssue({"id":id});
-            // console.log("UsereSLice Register data :",res.data)
+            
             return res;
-        // }
-        // catch{
-        //     return rejectWithValue(error);
-        // }
+        
     }
 )
 
@@ -76,22 +63,20 @@ export const issueSlice=createSlice({
     // Map Object Notation
     extraReducers:{
         [loadIssueAsync.pending]:(state,action)=>{
-            // state.token=localStorage.getItem('token');
-            // console.log("Issue Loading");
+            
             state.isLoading=true;
             state.isLoaded=false;
            
         },
         [loadIssueAsync.fulfilled]:(state,action)=>{
-            // state.token=localStorage.getItem('token');
-            // console.log("Issue Loaded");
+            
             state.isLoading=false;
             state.isLoaded=true;
             state.issuesList=action.payload;
             
         },
         [loadIssueAsync.rejected]:(state,action)=>{
-            // console.log("Failed To Load Issue");
+           
             state.isLoading=false;
             state.isLoaded=false;
           

@@ -1,17 +1,11 @@
-import React,{Component, useEffect, useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import {Col, Card, Button, Row,Form,Container, InputGroup,Spinner, Tooltip} from 'react-bootstrap';
-
-import PropTypes from 'prop-types';
-
-// import {clearErrors}  from '../../action/errorActions';
 import {Field, Formik} from 'formik';
 import * as yup from 'yup';
 import {useDispatch,useSelector} from 'react-redux';
-import {selectAuth, selectUser} from '../user/userSlice';
-import {  Prompt } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faIndustry, faShoppingBag, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
-import { editIssueAsync } from './issueSlice';
+import {selectAuth, selectUser} from '../../user/userSlice';
+import { editIssueAsync } from '../issueSlice';
+import { Prompt } from 'react-router';
 
 
 const schemaPro = yup.object({
@@ -38,32 +32,6 @@ const userinfo= useSelector(selectUser);
   const [Comments,setComments]=useState(''); 
   const isAuthenticated=useSelector(selectAuth);
 
-//   state={
-//     modal:false,   // modal for adding item is false initially
-//     msg:null,
-//     isBlocking:false,
-//     imageURL:'',
-//     name:"",
-//     description:"",
-//     manufacturer:"",
-//     price:'',
-//     stock:'',
-//     img:"",
-//     category:0,
-//     categories: categories,
-    
-// };
-
-useEffect(
-    function() {
-    console.log("Props:",props);
-      //  history.goForward();
-    //    setState({categories: categories})
-      
-    //   window.addEventListener('beforeunload',  beforeunload.bind(this));
-    }
-    
-,[]);
 
 
 
@@ -71,74 +39,23 @@ useEffect(
 useEffect(()=>{
       
   if(!isAuthenticated){
-      console.log("From Product to Home");
+      // console.log("From Product to Home");
       props.history.push('/')
     
      }
 
 },[props,isAuthenticated]);
 
-// componentDidUpdate(prevProps){
 
-//     const {error,isAuthenticated}= props;
-//     if(error!==prevProps.error){
-//         if(error.id==="LOGIN_FAIL"){
-//              setState({msg:error.msg.msg});
-//         }
-//         else{
-//              setState({msg:null});
-//         }
-//     }
-
-
-//     if ( isBlocking) {
-//       window.onbeforeload = () => true
-//     } else {
-//       window.onbeforeunload = undefined
-//     }
-    
-// }
-
-// beforeunload(e) {
-//   if ( isBlocking) {
-//     e.preventDefault();
-//     e.returnValue = true;
-//   }
-// }
-
-// componentWillUnmount() {
-//   window.removeEventListener('beforeunload',  beforeunload.bind(this));
-// }
-
-
-// static propTypes={
-//     isAuthenticated:PropTypes.bool,
-//     error:PropTypes.object.isRequired,
-//     login:PropTypes.func.isRequired,
-//     clearErrors:PropTypes.func.isRequired
-// }
-
-// const toggle=()=>{  
-    //  clearErrors();
-    // console.log( modal)
-    //  setState({
-    //     modal:! modal
-    // })
-// }
-
-// const onChange=(e)=>{
-//      setState({[e.target.name]:e.target.value})
-// }
- 
     var isLoaded= isLoaded;
-    // console.log("user from EditIssue::", user.email);
+   
     return (
       <div className="content">
         <Container fluid>
-          {/* <Prompt
+          <Prompt
                 when={ isBlocking}
                 message={(location)=> `Are You Sure Want To Go To ${location.pathname}`}
-/>  */}
+/> 
           <Row>
             <Col md={6}>
 <Card style={{display:'flex',justifyContent:'space-between'}}>
@@ -172,7 +89,7 @@ useEffect(()=>{
   //  console.log("Name:",name," Des:",description," Manu:",manufacturer," price:",price," Stock:",stock," Img:",img,"  Cat",CategoryName," User:",user);
      dispatch(editIssueAsync(issue));
      setIsBlocking(false);
-     console.log("IsBlocking",isBlocking);
+    //  console.log("IsBlocking",isBlocking);
       props.history.goBack();
    
    }
@@ -306,11 +223,7 @@ useEffect(()=>{
 </Card>
 
                         </Col>
-
-
-
-
-           
+     
           </Row>
         </Container>
       </div>

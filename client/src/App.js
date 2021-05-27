@@ -1,5 +1,5 @@
 import React, { useEffect,lazy } from 'react';
-import { BrowserRouter, Route, Router} from 'react-router-dom';
+import { BrowserRouter, Route} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth, selectUser } from './features/user/userSlice';
 import { loadIssueAsync } from './features/issue/issueSlice';
@@ -10,9 +10,9 @@ import AboutUs from './components/AboutUs/AboutUs';
 const AppNavbar=lazy(()=>import('./components/Navbar/AppNavbar'));
 const Footer=lazy(()=>import('./components/Footer/Footer'));
 const UserForm=lazy(()=>import('./features/user/UserForm'));
-const Issues=lazy(()=>import('./features/issue/Issues'));
-const IssueForm=lazy(()=>import('./features/issue/IssueForm'));
-const EditIssue=lazy(()=>import('./features/issue/EditIssue'));
+const Issues=lazy(()=>import('./features/issue/Issues/Issues'));
+const IssueForm=lazy(()=>import('./features/issue/IssueForm/IssueForm'));
+const EditIssue=lazy(()=>import('./features/issue/EditIssue/EditIssue'));
 const SingleIssue=lazy(()=>import('./features/issue/SingleIssue'));
 
 

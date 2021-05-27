@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AboutUs.css'
-import { NavLink, withRouter} from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 
 import { Container,Row,Col,Card } from 'react-bootstrap';
 import banner from '../../assets/images/aboutus.png' 

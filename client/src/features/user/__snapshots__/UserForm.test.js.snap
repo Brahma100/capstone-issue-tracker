@@ -1,0 +1,375 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserForm Render Checking Form Header 1`] = `
+<DocumentFragment>
+  <div
+    class="notifications-wrapper"
+  />
+  <div>
+    <div
+      class="App"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="container-fluid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col-md-6"
+              >
+                <div
+                  class="card"
+                  style="margin-top: 5rem;"
+                >
+                  <div
+                    class="card-header"
+                  >
+                    <div
+                      style="display: flex; flex-direction: column; align-items: center;"
+                    >
+                      <h7
+                        style="font-size: 22px;"
+                      >
+                        <b>
+                          Login Now
+                        </b>
+                      </h7>
+                      <span
+                        style="font-size: 14px; color: rgba(59, 62, 102, 0.5);"
+                      >
+                        Login To Continue The Contribution with Our Advanced Tools!!
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="card-body"
+                  >
+                    <form
+                      class=""
+                      novalidate=""
+                    >
+                      <div
+                        class="form-row"
+                      >
+                        <div
+                          class="form-group col-md-12"
+                        >
+                          <label
+                            class="form-label"
+                            for="validationFormik02"
+                          >
+                            Email ID
+                          </label>
+                          <div
+                            class="input-group"
+                          >
+                            <div
+                              class="input-group-prepend"
+                            >
+                              <span
+                                class="input-group-text"
+                                id="inputGroupPrepend"
+                              >
+                                @
+                              </span>
+                            </div>
+                            <input
+                              aria-describedby="inputGroupPrepend"
+                              class="form-control"
+                              id="validationFormik02"
+                              name="email"
+                              placeholder="Email ID"
+                              type="text"
+                              value=""
+                            />
+                            <div
+                              class="valid-feedback"
+                            >
+                              Looks good!
+                            </div>
+                            <div
+                              class="invalid-feedback"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="form-row"
+                      >
+                        <div
+                          class="form-group col-md-12"
+                        >
+                          <label
+                            class="form-label"
+                            for="validationFormik03"
+                          >
+                            Password
+                          </label>
+                          <input
+                            class="form-control"
+                            id="validationFormik03"
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            value=""
+                          />
+                          <div
+                            class="valid-feedback"
+                          >
+                            Looks good!
+                          </div>
+                          <div
+                            class="invalid-feedback"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        class="btn btn-primary"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                      <input
+                        checked=""
+                        style="margin-left: 1rem; margin-top: .5rem;"
+                        type="checkbox"
+                      />
+                      <span>
+                          Remember me!
+                      </span>
+                      <div
+                        class="forgot-password text-right"
+                        style="margin-top: 1rem;"
+                      >
+                        Don't have an account?  
+                        <span>
+                          <a>
+                            <b>
+                              Create an Account
+                            </b>
+                          </a>
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-md-6"
+              >
+                <div
+                  class="banner-card  card"
+                  style="margin-top: 5rem;"
+                >
+                  <div
+                    class="banner"
+                  >
+                    <img
+                      alt="alt"
+                      src="LoginSVG.png"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`UserForm Render checking Form Avaiability 1`] = `
+<DocumentFragment>
+  <div
+    class="notifications-wrapper"
+  />
+  <div>
+    <div
+      class="App"
+    >
+      <div
+        class="container"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="container-fluid"
+          >
+            <div
+              class="row"
+            >
+              <div
+                class="col-md-6"
+              >
+                <div
+                  class="card"
+                  style="margin-top: 5rem;"
+                >
+                  <div
+                    class="card-header"
+                  >
+                    <div
+                      style="display: flex; flex-direction: column; align-items: center;"
+                    >
+                      <h7
+                        style="font-size: 22px;"
+                      >
+                        <b>
+                          Login Now
+                        </b>
+                      </h7>
+                      <span
+                        style="font-size: 14px; color: rgba(59, 62, 102, 0.5);"
+                      >
+                        Login To Continue The Contribution with Our Advanced Tools!!
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    class="card-body"
+                  >
+                    <form
+                      class=""
+                      novalidate=""
+                    >
+                      <div
+                        class="form-row"
+                      >
+                        <div
+                          class="form-group col-md-12"
+                        >
+                          <label
+                            class="form-label"
+                            for="validationFormik02"
+                          >
+                            Email ID
+                          </label>
+                          <div
+                            class="input-group"
+                          >
+                            <div
+                              class="input-group-prepend"
+                            >
+                              <span
+                                class="input-group-text"
+                                id="inputGroupPrepend"
+                              >
+                                @
+                              </span>
+                            </div>
+                            <input
+                              aria-describedby="inputGroupPrepend"
+                              class="form-control"
+                              id="validationFormik02"
+                              name="email"
+                              placeholder="Email ID"
+                              type="text"
+                              value=""
+                            />
+                            <div
+                              class="valid-feedback"
+                            >
+                              Looks good!
+                            </div>
+                            <div
+                              class="invalid-feedback"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="form-row"
+                      >
+                        <div
+                          class="form-group col-md-12"
+                        >
+                          <label
+                            class="form-label"
+                            for="validationFormik03"
+                          >
+                            Password
+                          </label>
+                          <input
+                            class="form-control"
+                            id="validationFormik03"
+                            name="password"
+                            placeholder="Password"
+                            type="password"
+                            value=""
+                          />
+                          <div
+                            class="valid-feedback"
+                          >
+                            Looks good!
+                          </div>
+                          <div
+                            class="invalid-feedback"
+                          />
+                        </div>
+                      </div>
+                      <button
+                        class="btn btn-primary"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                      <input
+                        checked=""
+                        style="margin-left: 1rem; margin-top: .5rem;"
+                        type="checkbox"
+                      />
+                      <span>
+                          Remember me!
+                      </span>
+                      <div
+                        class="forgot-password text-right"
+                        style="margin-top: 1rem;"
+                      >
+                        Don't have an account?  
+                        <span>
+                          <a>
+                            <b>
+                              Create an Account
+                            </b>
+                          </a>
+                        </span>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="col-md-6"
+              >
+                <div
+                  class="banner-card  card"
+                  style="margin-top: 5rem;"
+                >
+                  <div
+                    class="banner"
+                  >
+                    <img
+                      alt="alt"
+                      src="LoginSVG.png"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

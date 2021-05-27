@@ -7,9 +7,7 @@ export default class issueApi{
                 "Content-Type":"application/json"
             }
         }
-        // console.log("Token",token);
-        
-            // config.headers['x-auth-token']=token;
+      
             
             return await axios.get("http://localhost:8000/issues",config)
             .then(res=>res.data)
@@ -45,7 +43,7 @@ export default class issueApi{
 
         return axios.post("http://localhost:8000/add_issue",body,config)
              .then(res=> res.data)
-            //  .catch(err=>console.log("Register Error:",err))
+           
     }
 
 
@@ -58,11 +56,11 @@ export default class issueApi{
             }
         }
         const body=JSON.stringify({id,Issue,Description,Severity,Status,user,Comments});
-         console.log("Data:",body);
+   
 
         return axios.post("http://localhost:8000/update_issue",body,config)
              .then(res=> res.data)
-            //  .catch(err=>console.log("Register Error:",err))
+        
     }
 
 
@@ -78,6 +76,6 @@ export default class issueApi{
 
         return axios.post("http://localhost:8000/delete_issue",body,config)
              .then(res=> res.data)
-            //  .catch(err=>console.log("Register Error:",err))
+         
     }
 }

@@ -3,7 +3,7 @@ import {mount, shallow} from 'enzyme'
 import toJson from 'enzyme-to-json';
 import IssueForm from './IssueForm';
 import { Provider } from 'react-redux';
-import {store} from '../../app/store'
+import {store} from '../../../app/store'
 
 describe('IssueForm Snapshot', () => {
     let wrapper;

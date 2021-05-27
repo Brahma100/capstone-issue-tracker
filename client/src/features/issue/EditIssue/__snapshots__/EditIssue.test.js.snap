@@ -1,0 +1,431 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditIssue Render Checking Form Header 1`] = `
+<DocumentFragment>
+  <div
+    class="content"
+  >
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col-md-6"
+        >
+          <div
+            class="card"
+            style="display: flex; justify-content: space-between;"
+          >
+            <div
+              class="card-header"
+            >
+              <p
+                style="font-size: 1.5rem; font-weight: bold; color: rgb(59, 68, 193);"
+              >
+                Edit the Choosen Issue
+              </p>
+            </div>
+            <div
+              class="card-body"
+            >
+              <form
+                class=""
+                novalidate=""
+              >
+                <div
+                  class="form-row"
+                >
+                  <div
+                    class="form-group col-md-12"
+                    style="width: 92%; padding-left: 2rem;"
+                  >
+                    <label
+                      class="form-label"
+                      for="validationFormik01"
+                    >
+                      Issue Name
+                    </label>
+                    <input
+                      aria-describedby="inputGroupPrepend"
+                      class="form-control"
+                      id="validationFormik01"
+                      name="Issue"
+                      placeholder="Issue Name"
+                      type="text"
+                      value=" Ineffective data edits"
+                    />
+                    <div
+                      class="invalid-feedback"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="form-group col-md-12"
+                  style="width: 92%; padding-left: 2rem;"
+                >
+                  <div
+                    class="form-row"
+                  >
+                    <label
+                      class="form-label"
+                      for="validationFormik01"
+                    >
+                      Description
+                    </label>
+                    <textarea
+                      aria-describedby="inputGroupPrepend"
+                      name="Description"
+                      placeholder="Type Description"
+                      type="text-area"
+                    >
+                      an alphanumeric address field that allows spaces to be entered before any numbers or letters in the address. Therefore, when searches or sorts are performed on the address field, the search or sort may not find the intended address.
+                    </textarea>
+                  </div>
+                </div>
+                <div
+                  class="form-row"
+                >
+                  <div
+                    class="form-group col-md-12"
+                    style="width: 92%; padding-left: 2rem;"
+                  >
+                    <label
+                      class="form-label"
+                      for="validationFormik01"
+                    >
+                      Severity
+                    </label>
+                    <select
+                      id="Severity"
+                      name="Severity"
+                    >
+                      <option
+                        value="Critical"
+                      >
+                        Critical
+                      </option>
+                      <option
+                        value="Minor"
+                      >
+                        Minor
+                      </option>
+                      <option
+                        value="Major"
+                      >
+                        Major
+                      </option>
+                    </select>
+                    <br />
+                  </div>
+                </div>
+                <div
+                  class="form-row"
+                >
+                  <div
+                    class="form-group col-md-12"
+                    style="width: 92%; padding-left: 2rem;"
+                  >
+                    <div
+                      aria-labelledby="my-radio-group"
+                      role="group"
+                      value="Open"
+                    >
+                      <label
+                        class="form-label"
+                        for="validationFormik01"
+                      >
+                        Status
+                      </label>
+                      <label
+                        class="group"
+                      >
+                        <input
+                          checked=""
+                          name="Status"
+                          type="radio"
+                          value="Open"
+                        />
+                        Open
+                      </label>
+                      <label
+                        class="group"
+                      >
+                        <input
+                          name="Status"
+                          type="radio"
+                          value="In Progress"
+                        />
+                        In Progress
+                      </label>
+                      <label
+                        class="group"
+                      >
+                        <input
+                          name="Status"
+                          type="radio"
+                          value="Closed"
+                        />
+                        Closed
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="form-group col-md-12"
+                  style="width: 92%; padding-left: 2rem;"
+                >
+                  <div
+                    class="form-row"
+                  >
+                    <label
+                      class="form-label"
+                      for="validationFormik01"
+                    >
+                      Comments
+                    </label>
+                    <textarea
+                      aria-describedby="inputGroupPrepend"
+                      name="Comments"
+                      placeholder="Type Comments"
+                      type="text-area"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="form-group"
+                  style="width: 92%; padding-left: 2rem;"
+                >
+                  <button
+                    class="btn btn-primary"
+                    style="margin-top: 10px;"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`EditIssue Render checking Form Avaiability 1`] = `
+<DocumentFragment>
+  <div
+    class="content"
+  >
+    <div
+      class="container-fluid"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="col-md-6"
+        >
+          <div
+            class="card"
+            style="display: flex; justify-content: space-between;"
+          >
+            <div
+              class="card-header"
+            >
+              <p
+                style="font-size: 1.5rem; font-weight: bold; color: rgb(59, 68, 193);"
+              >
+                Edit the Choosen Issue
+              </p>
+            </div>
+            <div
+              class="card-body"
+            >
+              <form
+                class=""
+                novalidate=""
+              >
+                <div
+                  class="form-row"
+                >
+                  <div
+                    class="form-group col-md-12"
+                    style="width: 92%; padding-left: 2rem;"
+                  >
+                    <label
+                      class="form-label"
+                      for="validationFormik01"
+                    >
+                      Issue Name
+                    </label>
+                    <input
+                      aria-describedby="inputGroupPrepend"
+                      class="form-control"
+                      id="validationFormik01"
+                      name="Issue"
+                      placeholder="Issue Name"
+                      type="text"
+                      value=" Ineffective data edits"
+                    />
+                    <div
+                      class="invalid-feedback"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="form-group col-md-12"
+                  style="width: 92%; padding-left: 2rem;"
+                >
+                  <div
+                    class="form-row"
+                  >
+                    <label
+                      class="form-label"
+                      for="validationFormik01"
+                    >
+                      Description
+                    </label>
+                    <textarea
+                      aria-describedby="inputGroupPrepend"
+                      name="Description"
+                      placeholder="Type Description"
+                      type="text-area"
+                    >
+                      an alphanumeric address field that allows spaces to be entered before any numbers or letters in the address. Therefore, when searches or sorts are performed on the address field, the search or sort may not find the intended address.
+                    </textarea>
+                  </div>
+                </div>
+                <div
+                  class="form-row"
+                >
+                  <div
+                    class="form-group col-md-12"
+                    style="width: 92%; padding-left: 2rem;"
+                  >
+                    <label
+                      class="form-label"
+                      for="validationFormik01"
+                    >
+                      Severity
+                    </label>
+                    <select
+                      id="Severity"
+                      name="Severity"
+                    >
+                      <option
+                        value="Critical"
+                      >
+                        Critical
+                      </option>
+                      <option
+                        value="Minor"
+                      >
+                        Minor
+                      </option>
+                      <option
+                        value="Major"
+                      >
+                        Major
+                      </option>
+                    </select>
+                    <br />
+                  </div>
+                </div>
+                <div
+                  class="form-row"
+                >
+                  <div
+                    class="form-group col-md-12"
+                    style="width: 92%; padding-left: 2rem;"
+                  >
+                    <div
+                      aria-labelledby="my-radio-group"
+                      role="group"
+                      value="Open"
+                    >
+                      <label
+                        class="form-label"
+                        for="validationFormik01"
+                      >
+                        Status
+                      </label>
+                      <label
+                        class="group"
+                      >
+                        <input
+                          checked=""
+                          name="Status"
+                          type="radio"
+                          value="Open"
+                        />
+                        Open
+                      </label>
+                      <label
+                        class="group"
+                      >
+                        <input
+                          name="Status"
+                          type="radio"
+                          value="In Progress"
+                        />
+                        In Progress
+                      </label>
+                      <label
+                        class="group"
+                      >
+                        <input
+                          name="Status"
+                          type="radio"
+                          value="Closed"
+                        />
+                        Closed
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="form-group col-md-12"
+                  style="width: 92%; padding-left: 2rem;"
+                >
+                  <div
+                    class="form-row"
+                  >
+                    <label
+                      class="form-label"
+                      for="validationFormik01"
+                    >
+                      Comments
+                    </label>
+                    <textarea
+                      aria-describedby="inputGroupPrepend"
+                      name="Comments"
+                      placeholder="Type Comments"
+                      type="text-area"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="form-group"
+                  style="width: 92%; padding-left: 2rem;"
+                >
+                  <button
+                    class="btn btn-primary"
+                    style="margin-top: 10px;"
+                    type="submit"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

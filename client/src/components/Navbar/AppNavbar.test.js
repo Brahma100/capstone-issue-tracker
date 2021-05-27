@@ -2,8 +2,7 @@ import React from 'react';
 import {
   render,
   screen,
-  within,
-  RenderResult,
+  
   fireEvent,
 } from '@testing-library/react';
 import { Provider } from 'react-redux';
@@ -11,11 +10,8 @@ import { Provider } from 'react-redux';
 import { store } from '../../app/store';
 import  AppNavBar from './AppNavBar';
 import UserForm from '../../features/user/UserForm'
-// import { reset } from '../../profileSlice';
-import {loadUserAsync, loginUserAsync} from '../../features/user/userSlice';
 import { MemoryRouter } from 'react-router-dom';
-import Issues from '../../features/issue/Issues';
-import { shallow } from 'enzyme';
+
 const { getComputedStyle } = window;
 window.getComputedStyle = (elt) => getComputedStyle(elt);
 const flushPromises = () => new Promise(setImmediate);

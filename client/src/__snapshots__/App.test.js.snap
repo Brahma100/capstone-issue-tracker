@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Snapshot renders correctly 1`] = `
+<Provider
+  store={
+    Object {
+      "@@observable": [Function],
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <App>
+    <BrowserRouter>
+      <Router
+        history={
+          Object {
+            "action": "POP",
+            "block": [Function],
+            "createHref": [Function],
+            "go": [Function],
+            "goBack": [Function],
+            "goForward": [Function],
+            "length": 1,
+            "listen": [Function],
+            "location": Object {
+              "hash": "",
+              "pathname": "/",
+              "search": "",
+              "state": undefined,
+            },
+            "push": [Function],
+            "replace": [Function],
+          }
+        }
+      >
+        <div
+          className="App"
+        >
+          <Suspense
+            fallback={
+              <div>
+                <Loading />
+              </div>
+            }
+          >
+            <div>
+              <Loading>
+                <Container
+                  fluid={false}
+                >
+                  <div
+                    className="container"
+                  >
+                    <div
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "display": "flex",
+                          "justifyContent": "center",
+                          "width": "100%",
+                        }
+                      }
+                    >
+                      <Spinner
+                        animation="border"
+                        style={
+                          Object {
+                            "height": "5rem",
+                            "width": "5rem",
+                          }
+                        }
+                        variant="primary"
+                      >
+                        <div
+                          className="spinner-border text-primary"
+                          style={
+                            Object {
+                              "height": "5rem",
+                              "width": "5rem",
+                            }
+                          }
+                        />
+                      </Spinner>
+                    </div>
+                  </div>
+                </Container>
+              </Loading>
+            </div>
+          </Suspense>
+        </div>
+      </Router>
+    </BrowserRouter>
+  </App>
+</Provider>
+`;

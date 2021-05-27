@@ -1,17 +1,11 @@
 import React,{Component, useEffect, useState} from 'react';
-import {Col, Card, Button, Row,Form,Container, InputGroup,Spinner, Tooltip} from 'react-bootstrap';
-// import DatePickerWithFormik from "./date-picker";
-import PropTypes from 'prop-types';
-
-// import {clearErrors}  from '../../action/errorActions';
+import {Col, Card, Button, Row,Form,Container} from 'react-bootstrap';
 import {Field, Formik} from 'formik';
 import * as yup from 'yup';
 import {useDispatch,useSelector} from 'react-redux';
-import {selectAuth, selectUser} from '../user/userSlice';
+import {selectAuth, selectUser} from '../../user/userSlice';
 import {  Prompt } from "react-router-dom";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faIndustry, faShoppingBag, faStar, faUser } from '@fortawesome/free-solid-svg-icons';
-import { addIssueAsync } from './issueSlice';
+import { addIssueAsync } from '../issueSlice';
 
 
 const schemaPro = yup.object({
@@ -36,32 +30,6 @@ const userinfo= useSelector(selectUser);
   const [Date,setDate]=useState('2021-05-28');
   const isAuthenticated=useSelector(selectAuth);
 
-//   state={
-//     modal:false,   // modal for adding item is false initially
-//     msg:null,
-//     isBlocking:false,
-//     imageURL:'',
-//     name:"",
-//     description:"",
-//     manufacturer:"",
-//     price:'',
-//     stock:'',
-//     img:"",
-//     category:0,
-//     categories: categories,
-    
-// };
-
-useEffect(
-    function() {
-    console.log("Props:",props);
-      //  history.goForward();
-    //    setState({categories: categories})
-      
-    //   window.addEventListener('beforeunload',  beforeunload.bind(this));
-    }
-    
-,[]);
 useEffect(()=>{
       
   if(!isAuthenticated){
@@ -72,61 +40,8 @@ useEffect(()=>{
 
 },[props,isAuthenticated]);
 
-
-// componentDidUpdate(prevProps){
-
-//     const {error,isAuthenticated}= props;
-//     if(error!==prevProps.error){
-//         if(error.id==="LOGIN_FAIL"){
-//              setState({msg:error.msg.msg});
-//         }
-//         else{
-//              setState({msg:null});
-//         }
-//     }
-
-
-//     if ( isBlocking) {
-//       window.onbeforeload = () => true
-//     } else {
-//       window.onbeforeunload = undefined
-//     }
-    
-// }
-
-// beforeunload(e) {
-//   if ( isBlocking) {
-//     e.preventDefault();
-//     e.returnValue = true;
-//   }
-// }
-
-// componentWillUnmount() {
-//   window.removeEventListener('beforeunload',  beforeunload.bind(this));
-// }
-
-
-// static propTypes={
-//     isAuthenticated:PropTypes.bool,
-//     error:PropTypes.object.isRequired,
-//     login:PropTypes.func.isRequired,
-//     clearErrors:PropTypes.func.isRequired
-// }
-
-// const toggle=()=>{  
-    //  clearErrors();
-    // console.log( modal)
-    //  setState({
-    //     modal:! modal
-    // })
-// }
-
-// const onChange=(e)=>{
-//      setState({[e.target.name]:e.target.value})
-// }
  
     var isLoaded= isLoaded;
-    // console.log("user from IssueForm::", user.email);
     return (
       <div className="content">
         <Container fluid>
@@ -154,17 +69,15 @@ useEffect(()=>{
   onSubmit={(values)=>{ 
 
     const {Issue,Severity,Status,Description}=values;
-    // console.log("On Submit Called",Issue);
+  
     
     const user= userinfo;
-    // console.log("User......",user);
+   
 
     const issue={
         Issue,Description,Severity,Status,user
     }
-    // console.log("Submitted Issue:.......",issue)
-  //  console.log("Name:",name," Des:",description," Manu:",manufacturer," price:",price," Stock:",stock," Img:",img,"  Cat",CategoryName," User:",user);
-     dispatch(addIssueAsync(issue));
+        dispatch(addIssueAsync(issue));
      setIsBlocking(false);
      console.log("IsBlocking",isBlocking);
       props.history.goBack();

@@ -34,7 +34,7 @@ function AppNavbar(){
       
             dispatch(loadUserAsync())
   
-        console.log("ReRender The AppNavBar.............................");
+     
     }
     ,[])
 
@@ -64,9 +64,7 @@ function AppNavbar(){
                             <Dropdown.Item header>
                             {user? <div className="user-avatar">
                     <img alt="alt" className="avatar" style={{width:'2rem',borderRadius:'50%'}} src={user.img?user.img:avatar} />
-                    {/* <div class="status-overlay">
-                        <i class="bowtie-icon bowtie-status-success success"></i>
-                    </div> */}
+                    
                     </div>:'X'}
                     <div>
                         <span style={{color:'red',fontWeight:400,fontSize:'80%'}}>Tracker Admin</span>
@@ -110,9 +108,7 @@ function AppNavbar(){
                     <       Button className="about-btn" style={{paddingLeft:' 1.5rem',paddingRight:'1.5rem'}}><b> About</b></Button>
                         </NavLink>
                 </Nav.Item>
-                {/* <Nav.Item>
-                    <LoginModal/>
-                </Nav.Item> */}
+               
             </Fragment>
         );
         return(
@@ -124,8 +120,7 @@ function AppNavbar(){
                     <Navbar.Toggle bg='light' variant='dark' onClick={ toggle}/>
                     <Navbar.Collapse  className="mainNavCollapse" isopen={ isopen} navbar>
                         <NavLink  style={{marginLeft:"auto"}} to='/'><b>Home</b></NavLink>
-                        {/* <NavLink  href='/admin/dashboard'><b>Dashboard</b></NavLink> */}
-                        {/* <NavLink className="ml-3 mr-3" to='/issues'><b>Issues</b></NavLink> */}
+                        
                         <Nav  className="justify-content-center" >
                         {isAuthenticated ?authLinks:guestLinks}    
                         </Nav>
