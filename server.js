@@ -152,11 +152,6 @@ var dateTime = require('node-datetime');
 var dt = dateTime.create();
 var date = dt.format('Y-m-d H:M:S');
 
-
-
-
-// Get current issues data
-// var data = JSON.parse(data.toString());
 if(Status==="Closed"){
   r_date=date
 }
@@ -167,7 +162,7 @@ if(Status==="Closed"){
   // Storing target Product in "Issue" from db
   const issue=issuedb.issues[index];  
   // Matching new Entries with Previous Entries
-  if(Issue===issue.Issue && Description===issue.Description && Severity===issue.Severity && Status===issue.Status) return res.status(400).json({msg:'Server: Entered Data is Same as Previous One'});
+  // if(Issue===issue.Issue && Description===issue.Description && Severity===issue.Severity && Status===issue.Status) return res.status(400).json({msg:'Server: Entered Data is Same as Previous One'});
   // Reading Json DB
   fs.readFile("./Json_DataBase_Files/issues.json", (err, data) => {  
     if (err) {

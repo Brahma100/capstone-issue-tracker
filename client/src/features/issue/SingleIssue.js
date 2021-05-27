@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Accordion, Button, Card, Col, Container, Dropdown, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { connect, useDispatch, useSelector } from 'react-redux';
 import { NavLink, useHistory,useParams } from 'react-router-dom';
-import UserCard from '../../components/UserCard/UserCard';
+
 import { selectAuth, selectUser } from '../user/userSlice';
 import { deleteIssueAsync } from './issueSlice';
 import './SingleIssue.css';

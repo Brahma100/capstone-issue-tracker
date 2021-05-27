@@ -193,10 +193,10 @@ useEffect(
             <Container>
           <div className="content" >
             <Container fluid>
-            {/* <Prompt
+            <Prompt
                 when={ isBlocking}
                 message={(location)=> `Are You Sure Want To Go To ${location.pathname}`}
-/>  */}
+/> 
               <Row>
              
                 <Col md={6} >
@@ -268,7 +268,7 @@ useEffect(
                 value={values.fname}
                 // onChangeCapture={(e)=>  setState({isBlocking:e.target.value>0})}
                 // setState({isBlocking:e.target.value.length>0});
-                onChange={e=>{ setIsBlocking({isBlocking:e.target.value.length>0});   handleChange(e)}}
+                onChange={e=>{  setIsBlocking(e.target.value.length>0);   handleChange(e)}}
                 isInvalid={!!errors.fname}
               />
               <Form.Control.Feedback type="invalid">
@@ -282,7 +282,7 @@ useEffect(
                 placeholder="Last Name"
                 name="lname"
                 value={values.lname}
-                onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                onChange={e=>{   setIsBlocking(e.target.value.length>0); handleChange(e)}}
                 isInvalid={!!errors.lname}
               />
               <Form.Control.Feedback type="invalid">
@@ -305,7 +305,7 @@ useEffect(
                   aria-describedby="inputGroupPrepend"
                   name="email"
                   value={values.email}
-                  onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                  onChange={e=>{  setIsBlocking(e.target.value.length>0); handleChange(e)}}
                   isInvalid={!!errors.email}
                 />
                 <Form.Control.Feedback type="invalid">
@@ -323,7 +323,7 @@ useEffect(
                 placeholder="Password"
                 name="password"
                 value={values.password}
-                onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                onChange={e=>{  setIsBlocking(e.target.value.length>0); handleChange(e)}}
                 isInvalid={!!errors.password}
               />
               <Form.Control.Feedback type="invalid">
@@ -341,7 +341,7 @@ useEffect(
                 placeholder="City"
                 name="city"
                 value={values.city?values.city: city}
-                onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                onChange={e=>{   setIsBlocking(e.target.value.length>0); handleChange(e)}}
                 isInvalid={!!errors.city}
               />
               <Form.Control.Feedback type="invalid">
@@ -356,7 +356,7 @@ useEffect(
                 placeholder="State"
                 name="state"
                 value={values.state?values.state: state}
-                onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                onChange={e=>{   setIsBlocking(e.target.value.length>0); handleChange(e)}}
                 isInvalid={!!errors.state}
               />
               <Form.Control.Feedback type="invalid">
@@ -373,7 +373,7 @@ useEffect(
                 placeholder="Postal"
                 name="postal"
                 value={values.postal?values.postal: postal}
-                onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                onChange={e=>{   setIsBlocking(e.target.value.length>0); handleChange(e)}}
                 isInvalid={!!errors.postal}
               />
               <Form.Control.Feedback type="invalid">
@@ -388,27 +388,14 @@ useEffect(
                 placeholder="Country"
                 name="country"
                 value={values.country?values.country: country}
-                onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                onChange={e=>{   setIsBlocking(e.target.value.length>0); handleChange(e)}}
                 isInvalid={!!errors.country}
               />
               <Form.Control.Feedback type="invalid">
                 {errors.country}
               </Form.Control.Feedback>
             </Form.Group>
-            {/* <Form.Group as={Col} md="12" controlId="validationFormik03">
-              <Form.Label>Phone/Mobile Number</Form.Label>
-              <Form.Control
-                type="number"
-                placeholder="Mobile Number"
-                name="mobile"
-                value={values.mobile_number}
-                onChange={handleChange}
-                isInvalid={!!errors.mobile_number}
-              />
-              <Form.Control.Feedback type="invalid">
-                {errors.mobile_number}
-              </Form.Control.Feedback>
-            </Form.Group> */}
+           
 
           </Form.Row>
             
@@ -434,7 +421,7 @@ useEffect(
           
           <input defaultChecked={ remember} style={{marginLeft:'1rem',marginTop:'.5rem'}} type="checkbox" /><span>  Remember me!</span>
                             <div style={{}} className="forgot-password text-right">
-                                Already registered <span onClick={handleSignIn} ><a ><b>Sign in?</b></a></span>
+                                Already registered <span onClick={handleSignIn} ><a><b>Sign in?</b></a></span>
                             </div>
                             <div id="imgTest"></div>
                         </Form>
@@ -459,7 +446,7 @@ useEffect(
                         }}
                         onSubmit={(values)=>{ 
                           // setMsg(null);
-                          setIsBlocking(false);
+                        
                             // setState({isBlocking:false});
                           console.log("Update:", isBlocking);
                         const {email,password}=values;
@@ -468,6 +455,7 @@ useEffect(
                             email,password
                         }
                           dispatch(loginUserAsync(user));
+                          setIsBlocking(false);
                           // setTimeout(()=>{
                           //     if(err){
                           //       addNotification(err);
@@ -499,7 +487,7 @@ useEffect(
                                     aria-describedby="inputGroupPrepend"
                                     name="email"
                                     value={values.email}
-                                    onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                                    onChange={e=>{  setIsBlocking(e.target.value.length>0); handleChange(e)}}
                                     isInvalid={!!errors.email}
                                     />
                                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
@@ -519,7 +507,7 @@ useEffect(
                                     placeholder="Password"
                                     name="password"
                                     value={values.password}
-                                    onChange={e=>{  setIsBlocking({isBlocking:e.target.value.length>0}); handleChange(e)}}
+                                    onChange={e=>{  setIsBlocking(e.target.value.length>0); handleChange(e)}}
                                     isInvalid={!!errors.password}
                                 />
                                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>

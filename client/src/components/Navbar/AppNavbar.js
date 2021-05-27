@@ -127,7 +127,7 @@ function AppNavbar(){
                         {/* <NavLink  href='/admin/dashboard'><b>Dashboard</b></NavLink> */}
                         {/* <NavLink className="ml-3 mr-3" to='/issues'><b>Issues</b></NavLink> */}
                         <Nav  className="justify-content-center" >
-                        {isAuthenticated && user?authLinks:guestLinks}    
+                        {isAuthenticated ?authLinks:guestLinks}    
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
