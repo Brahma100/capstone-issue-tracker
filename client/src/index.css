@@ -202,6 +202,14 @@ body,.filter-box.container{
 .card-header{
   border-bottom: 1px solid #ff7a18 ;
 }
-input{
-  color:#ff7a18 !important;
+.navbar-light .navbar-toggler {
+  color: rgb(252 252 252 / 55%);
+  border-color: rgb(105, 105, 105) !important;
 }
+/* input{
+  color:#ff7a18 !important;
+} */
+/* .pie-card .issue-card .card{
+     background: #17141d !important;
+    box-shadow: -1rem 0 3rem #000;
+} */

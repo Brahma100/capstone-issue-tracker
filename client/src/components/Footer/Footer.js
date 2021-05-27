@@ -18,7 +18,7 @@ class Footer extends Component {
                 <a href="/productsGrid"><b>Issues</b></a>
               </li>
               <li>
-                <a href="/about"><b>About Us</b></a>
+                <a href="/aboutUs"><b>About Us</b></a>
               </li>
             </ul>
           </nav>

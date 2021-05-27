@@ -37,9 +37,12 @@ export const editIssueAsync=createAsyncThunk(
         // try{
             // console.log("AddUserAsync...........",issue);
             const res=await issueApi.editIssue(issue);
-            // console.log("UsereSLice Register data :",res.data)
-            return res;
-            // return loadIssueAsync();
+            console.log("EDIT Issue1...........",res);
+
+            if (!res.Issue && res.response.status===400) {
+                return rejectWithValue(res);
+              }
+              return res;
         // }
         // catch{
         //     return rejectWithValue(error);
@@ -110,6 +113,7 @@ export const issueSlice=createSlice({
             // console.log("Edit Issue Failed");
             state.isLoading=false;
             state.isLoaded=false;
+            console.log("Edit Failed",action.payload.response.data.msg);
             
         },
         [addIssueAsync.pending]:(state,action)=>{

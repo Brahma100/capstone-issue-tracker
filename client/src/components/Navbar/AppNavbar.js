@@ -1,10 +1,6 @@
-import React, {Component, Fragment, useEffect, useState} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import {NavLink} from 'react-router-dom'
 import {Navbar, Nav,Container,Dropdown, Button} from 'react-bootstrap';
-// import Logout from '../auth/Logout';
-// import RegisterModal from '../auth/RegisterModal1';
-// import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
 import avatar from '../../assets/images/avatar.png'
 import logo from '../../assets/images/logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,8 +9,7 @@ import './AppNavbar.css'
 import {useSelector,useDispatch} from 'react-redux'
 import { loadUserAsync, selectAuth, selectUser } from '../../features/user/userSlice';
 import Logout from '../../features/user/Logout';
-// import store from '../../store';
-// import { loadUser } from '../../action/authActions';
+
 
 function AppNavbar(){
   const [dropdownOpen,setDropDownOpen]=useState(false);
@@ -111,7 +106,7 @@ function AppNavbar(){
                    
                 </Nav.Item>
                 <Nav.Item>
-                        <NavLink onClick={ toggle} to='#'>
+                        <NavLink onClick={ toggle} to='/aboutUs'>
                     <       Button className="about-btn" style={{paddingLeft:' 1.5rem',paddingRight:'1.5rem'}}><b> About</b></Button>
                         </NavLink>
                 </Nav.Item>
@@ -132,7 +127,7 @@ function AppNavbar(){
                         {/* <NavLink  href='/admin/dashboard'><b>Dashboard</b></NavLink> */}
                         {/* <NavLink className="ml-3 mr-3" to='/issues'><b>Issues</b></NavLink> */}
                         <Nav  className="justify-content-center" >
-                        {isAuthenticated?authLinks:guestLinks}    
+                        {isAuthenticated && user?authLinks:guestLinks}    
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

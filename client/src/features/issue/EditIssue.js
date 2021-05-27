@@ -15,9 +15,11 @@ import { editIssueAsync } from './issueSlice';
 
 
 const schemaPro = yup.object({
-    Issue:yup.string().required("Description is Required"),
+    Issue:yup.string().required("Issue Name is Required"),
     Severity:yup.string().required(),
     Status:yup.string().required("Status  is Required"),
+    Description:yup.string().required("Description  is Required"),
+    Comments:yup.string().required("Comments  is Required"),
 
 })
 
@@ -30,8 +32,10 @@ const userinfo= useSelector(selectUser);
   const [isBlocking,setIsBlocking]=useState(false);
   const [Id,setId]=useState(issue.id); 
   const [Issue,setIssue]=useState(issue.Issue); 
+  const [Description,setDescription]=useState(issue.Description); 
   const [Severity,setSeverity]=useState(issue.Severity); 
   const [Status,setStatus]=useState(issue.Status); 
+  const [Comments,setComments]=useState(''); 
   const isAuthenticated=useSelector(selectAuth);
 
 //   state={
@@ -150,19 +154,20 @@ useEffect(()=>{
   validationSchema={schemaPro}
  
 
-  initialValues={{Issue:Issue,Severity:Severity,Status:Status}}
+  initialValues={{Issue:Issue,Description:Description,Severity:Severity,Status:Status,Comments:Comments}}
 
   onSubmit={(values)=>{ 
 
-    const {Issue,Severity,Status}=values;
+    const {Issue,Description,Severity,Status,Comments}=values;
     // console.log("On Submit Called",Issue);
     
     const user= userinfo;
     // console.log("User......",user);
     const id=Id;
     const issue={
-        id,Issue,Severity,Status,user
+        id,Issue,Description,Severity,Status,user,Comments
     }
+    console.log("Edit Data",issue);
     // console.log("Submitted Issue:.......",issue)
   //  console.log("Name:",name," Des:",description," Manu:",manufacturer," price:",price," Stock:",stock," Img:",img,"  Cat",CategoryName," User:",user);
      dispatch(editIssueAsync(issue));
@@ -203,7 +208,24 @@ useEffect(()=>{
           
         </Form.Group>
         </Form.Row>
-
+        <Form.Group as={Col} md="12" controlId="validationFormik01" style={{width:'92%',paddingLeft:'2rem'}}>
+                <Form.Row>
+                      <Form.Label>Description</Form.Label>
+          
+                <textarea 
+                  type="text-area"
+                  placeholder="Type Description"
+                  aria-describedby="inputGroupPrepend"
+                  name="Description"
+                  value={values.Description}
+                  onChange={(e)=>{ setIsBlocking(e.target.value.length>0);handleChange(e); setDescription(e.target.value)}} 
+                  isInvalid={!!errors.Description}
+                  />
+                   {errors.Description && touched.Description && (
+                        <div className="input-feedback">{errors.Description}</div>
+                    )}
+                  </Form.Row> 
+        </Form.Group>
 
 
 
@@ -254,6 +276,24 @@ useEffect(()=>{
 
 </Form.Group>
         </Form.Row>
+        <Form.Group as={Col} md="12" controlId="validationFormik01" style={{width:'92%',paddingLeft:'2rem'}}>
+                <Form.Row>
+                      <Form.Label>Comments</Form.Label>
+          
+                <textarea 
+                  type="text-area"
+                  placeholder="Type Comments"
+                  aria-describedby="inputGroupPrepend"
+                  name="Comments"
+                  value={values.Comments}
+                  onChange={(e)=>{ setIsBlocking(e.target.value.length>0);handleChange(e); setComments(e.target.value)}} 
+                  isInvalid={!!errors.Comments}
+                  />
+                   {errors.Comments && touched.Comments && (
+                        <div className="input-feedback">{errors.Comments}</div>
+                    )}
+                  </Form.Row> 
+        </Form.Group>
 
         
       <Form.Group style={{width:'92%',paddingLeft:'2rem'}}>

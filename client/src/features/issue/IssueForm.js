@@ -18,7 +18,7 @@ const schemaPro = yup.object({
     Issue:yup.string().required("Issue Name is Required"),
     Severity:yup.string().required(),
     Status:yup.string().required("Status  is Required"),
-    Date:yup.string().required("Date  is Required"),
+    // Date:yup.string().required("Date  is Required"),
     Description:yup.string().required("Dscription  is Required"),
 
 })
@@ -149,18 +149,18 @@ useEffect(()=>{
   validationSchema={schemaPro}
  
 
-  initialValues={{Issue:"",Severity:"Critical",Status:'',Date:'2021-06-06',Description:''}}
+  initialValues={{Issue:"",Severity:"Critical",Status:'',Description:''}}
 
   onSubmit={(values)=>{ 
 
-    const {Issue,Severity,Status}=values;
+    const {Issue,Severity,Status,Description}=values;
     // console.log("On Submit Called",Issue);
     
     const user= userinfo;
     // console.log("User......",user);
 
     const issue={
-        Issue,Severity,Status,user
+        Issue,Description,Severity,Status,user
     }
     // console.log("Submitted Issue:.......",issue)
   //  console.log("Name:",name," Des:",description," Manu:",manufacturer," price:",price," Stock:",stock," Img:",img,"  Cat",CategoryName," User:",user);

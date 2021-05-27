@@ -23,30 +23,13 @@ const renderIssue = () =>
     </Provider>,
   );
 
-  beforeEach(() => {
-    window.getComputedStyle = () => {};
+//   beforeEach(() => {
+//     window.getComputedStyle = () => {};
    
-});
+// });
   test('Renders the Issues', () => {
     const { asFragment } = renderIssue();
     expect(asFragment()).toMatchSnapshot();
-    // expect(screen.getByRole('list.')).toBeInTheDocument();
    
   });
 
-
-// it("Renders <TodoList /> component", async () => {
-//     render(<Provider store={store}>
-//       < MemoryRouter>
-//     <Issues/>
-//     </ MemoryRouter>
-//   </Provider>);
-//     await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
-//     await waitForElementToBeRemoved(() => screen.getByText(/Fetching todos/i));
-
-//     expect(axios.get).toHaveBeenCalledTimes(1);
-//     todos.slice(0, 15).forEach((td) => {
-//       expect(screen.getByText(td.title)).toBeInTheDocument();
-//     });
-//   });
-  

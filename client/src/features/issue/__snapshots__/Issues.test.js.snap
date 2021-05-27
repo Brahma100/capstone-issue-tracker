@@ -3,8 +3,9 @@
 exports[`Renders the Issues 1`] = `
 <DocumentFragment>
   <div
-    style="background-image: url(back.jpg); background-repeat: no-repeat;"
-  >
+    class="notifications-wrapper"
+  />
+  <div>
     <div
       class="container"
       style="padding-top: 2rem; width: 100%;"
@@ -12,6 +13,102 @@ exports[`Renders the Issues 1`] = `
       <div
         class="content"
       >
+        <div
+          class="row"
+        >
+          <div
+            class="col-md-8"
+          >
+            <div>
+              <div
+                class="card-list"
+              />
+            </div>
+          </div>
+          <div
+            class="col-md-4"
+          >
+            <div
+              class="issue-card pie-card card"
+              style="box-shadow: -1rem 0 3rem #000; background: rgb(23, 20, 29); width: 19rem; margin: 1rem;"
+            >
+              <div
+                class="header"
+                style="padding: 10px; text-align: center;"
+              >
+                <h4
+                  class="title"
+                  style="color: rgb(252, 138, 62); font-size: 18px; font-weight: 400;"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="svg-inline--fa fa-thumbtack fa-w-12 "
+                    data-icon="thumbtack"
+                    data-prefix="fas"
+                    focusable="false"
+                    role="img"
+                    style="margin-right: .5rem;"
+                    viewBox="0 0 384 512"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M298.028 214.267L285.793 96H328c13.255 0 24-10.745 24-24V24c0-13.255-10.745-24-24-24H56C42.745 0 32 10.745 32 24v48c0 13.255 10.745 24 24 24h42.207L85.972 214.267C37.465 236.82 0 277.261 0 328c0 13.255 10.745 24 24 24h136v104.007c0 1.242.289 2.467.845 3.578l24 48c2.941 5.882 11.364 5.893 14.311 0l24-48a8.008 8.008 0 0 0 .845-3.578V352h136c13.255 0 24-10.745 24-24-.001-51.183-37.983-91.42-85.973-113.733z"
+                      fill="currentColor"
+                    />
+                  </svg>
+                  Issue Chart
+                </h4>
+                <p
+                  class="category"
+                >
+                  Average Performance of Status
+                </p>
+              </div>
+              <div
+                class="content"
+                style="padding: 10px; text-align: center;"
+              >
+                <div
+                  class="ct-chart ct-perfect-fourth"
+                  id="chartPreferences"
+                >
+                  <div
+                    class="ct-chart "
+                  />
+                </div>
+                <div
+                  class="footer"
+                >
+                  <div
+                    class="legend"
+                  >
+                    <i
+                      class="fa fa-circle text-success"
+                    />
+                     Closed
+                    <i
+                      class="fa fa-circle text-primary"
+                    />
+                     In Progress
+                    <i
+                      class="fa fa-circle text-danger"
+                    />
+                     Open
+                  </div>
+                  <hr />
+                  <div
+                    class="stats"
+                  >
+                    <i
+                      class="fa fa-clock-o"
+                    />
+                     Updated Now
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div
           class="spinner-undefined"
           style="width: 3rem; height: 3rem; color: green;"

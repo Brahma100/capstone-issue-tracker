@@ -27,8 +27,7 @@ export default class UserApi{
 
 
     static loginUser({email,password}){
-        // const email="2@a.a";
-        // const password="aaaaaa";
+        
         const config={
             headers:{
                 "Content-Type":"application/json"

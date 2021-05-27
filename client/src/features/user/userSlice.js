@@ -26,29 +26,30 @@ export const loadUserAsync=createAsyncThunk(
 export const addUserAsync=createAsyncThunk(
     'user/addUser',
     async (user,{rejectWithValue})=>{
-        // try{
-            // console.log("AddUserAsync...........",user);
+        
             const res=await UserApi.registerUser(user);
-            // console.log("UsereSLice Register data :",res.data)
-            return res;
-        // }
-        // catch{
-        //     return rejectWithValue(error);
-        // }
+            if (!res.token && res.response.status===400) {
+                return rejectWithValue(res);
+              }
+              return res;
     }
 )
 
 export const loginUserAsync=createAsyncThunk(
     'user/loginUser',
     async (user,{rejectWithValue})=>{
-       
-
-            const res=await UserApi.loginUser(user);
-            
-            return res;
-
         
+            const res=await UserApi.loginUser(user);
+            // console.log("Login Data3...",res);
+            if (!res.token && res.response.status===400) {
+                return rejectWithValue(res);
+              }
+              return res;
+          
+       
     }
+        
+    
 )
 export const logoutUserAsync=createAsyncThunk(
     'user/logoutUser',
@@ -77,7 +78,7 @@ export const userSlice=createSlice({
             state.isLoading=true;
             state.isLoaded=false;
             state.isAuthenticated=false;
-            state.err=null;
+            // state.err=null;
         },
         [loadUserAsync.fulfilled]:(state,action)=>{
             // state.token=localStorage.getItem('token');
@@ -87,14 +88,14 @@ export const userSlice=createSlice({
             state.isAuthenticated=true;
             state.userinfo=action.payload;
             state.err=null;
-            // console.log("UserAction",action);
+            console.log("UserAction",action);
         },
         [loadUserAsync.rejected]:(state,action)=>{
             // console.log("Failed To Load User");
             state.isLoading=false;
             state.isLoaded=false;
             state.isAuthenticated=false;
-            state.err=null;
+            // state.err=null;
         },
         [loginUserAsync.pending]:(state,action)=>{
             // console.log("Login Pending");
@@ -111,7 +112,7 @@ export const userSlice=createSlice({
             state.isLoaded=true;
             state.isAuthenticated=true;
             state.userinfo=action.payload;
-            console.log("Login Success",action.payload.err);
+            // console.log("Login Success",action);
             state.err=null;
             // console.log("UserAction",action);
         },
@@ -138,12 +139,14 @@ export const userSlice=createSlice({
             localStorage.setItem('token',action.payload.token);
             // console.log("Register UserAction",action.payload);
             state.token=localStorage.getItem('token');
+            state.err=null;
         },
         [addUserAsync.rejected]:(state,action)=>{
             // console.log("Register Failed");
             state.isLoading=false;
             state.isLoaded=false;
             state.isAuthenticated=false;
+            state.err=action.payload.response.data.msg;
         },
         [logoutUserAsync.pending]:(state,action)=>{
             // console.log("Logout Pending");

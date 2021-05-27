@@ -85,7 +85,7 @@ server.get('/issues',(req,res)=>{
 
 server.post('/add_issue', (req, res) => {
   const {Issue,Description,Severity,Status,user} = req.body;
-
+  console.log(Issue,Description,Severity,Status,user);
   if(!Issue || !Description ||  !Severity || !Status) return res.status(400).json({msg:'Please Enter all Fields'});
   // Check for Existence of Registering Product
   if(CheckIssue({Issue}) === true) {  
@@ -108,7 +108,7 @@ fs.readFile("./Json_DataBase_Files/issues.json", (err, data) => {
       var data = JSON.parse(data.toString());
       const id=crypto.randomBytes(12).toString('hex');
           
-                    data.issues.push({id: id,Issue:Issue,Description:Description, Severity: Severity,Status:Status,user:user,date:date,rank:0,editUser:{},r_date:""}); //add some data
+                    data.issues.push({id: id,Issue:Issue,Description:Description, Severity: Severity,Status:Status,user:user,date:date,rank:0,editUser:[],r_date:""}); //add some data
                     console.log("Push Pass",data);
                     var writeData = fs.writeFile("./Json_DataBase_Files/issues.json", JSON.stringify(data), (err, result) => {  // WRITE
                       if (err) {
@@ -128,7 +128,7 @@ fs.readFile("./Json_DataBase_Files/issues.json", (err, data) => {
                             user:user,
                             date:date,
                             rank:0,
-                            editUser:{},
+                            editUser:[],
                             r_date:""
                             }
               
@@ -142,11 +142,24 @@ fs.readFile("./Json_DataBase_Files/issues.json", (err, data) => {
 server.post("/update_issue",function(req,res){  
   // req==request from client || res=== Response that would be from Server
 
-  const {id,Issue,Description,Severity,Status,user} = req.body;
-console.log(id,Issue,Description,Severity,Status,user);
-if(!Issue || !Severity || !Status) return res.status(400).json({msg:'Please Enter all Fields'});
+  const {id,Issue,Description,Severity,Status,user,Comments} = req.body;
+console.log(id,Issue,Description,Severity,Status,user,Comments);
+if(!Comments) return res.status(401).json({msg:'Please Enter all Fields'});
 // Check for Existence of Registering User
+var r_date='';
+// Date of Issue Creation
+var dateTime = require('node-datetime');
+var dt = dateTime.create();
+var date = dt.format('Y-m-d H:M:S');
 
+
+
+
+// Get current issues data
+// var data = JSON.parse(data.toString());
+if(Status==="Closed"){
+  r_date=date
+}
   // Finding Issue by Id 
   const index=issuedb.issues.findIndex(Issue=>Issue.id===id);
   // Check for Existense of Product
@@ -154,7 +167,7 @@ if(!Issue || !Severity || !Status) return res.status(400).json({msg:'Please Ente
   // Storing target Product in "Issue" from db
   const issue=issuedb.issues[index];  
   // Matching new Entries with Previous Entries
-  if(Issue===issue.Issue && Severity===issue.Severity && Status===issue.Status) return res.status(400).json({msg:'Server: Entered Data is Same as Previous One'});
+  if(Issue===issue.Issue && Description===issue.Description && Severity===issue.Severity && Status===issue.Status) return res.status(400).json({msg:'Server: Entered Data is Same as Previous One'});
   // Reading Json DB
   fs.readFile("./Json_DataBase_Files/issues.json", (err, data) => {  
     if (err) {
@@ -167,8 +180,10 @@ if(!Issue || !Severity || !Status) return res.status(400).json({msg:'Please Ente
     data.issues[index].Issue=Issue;
     data.issues[index].Severity=Severity;
     data.issues[index].Status=Status;
-    data.issues[index].user=user;
-    console.log(data.issues[index].editUser,user);
+    // data.issues[index].editUser=
+    data.issues[index].editUser.push({user,Issue,Description,Severity,Status,Comments,date});
+    data.issues[index].r_date=r_date;
+    // console.log(data.issues[index].editUser,user);
     
     // Writing Updated data to Json DB
     var writeData = fs.writeFile("./Json_DataBase_Files/issues.json", JSON.stringify(data), (err, result) => {  // WRITE
@@ -185,9 +200,12 @@ if(!Issue || !Severity || !Status) return res.status(400).json({msg:'Please Ente
         id:data.issues[index].id,
         Issue:data.issues[index].Issue,  
         Severity:data.issues[index].Severity,
+        Description:data.issues[index].Description,
         Status:data.issues[index].Status,
         rank:data.issues[index].rank,
-         editUser:data.issues[index].editUser
+        date:data.issues[index].date,
+        editUser:data.issues[index].editUser,
+        r_date:data.issues[index].r_date
       }  
       })
           

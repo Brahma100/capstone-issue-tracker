@@ -34,13 +34,13 @@ export default class issueApi{
 
     }
 
-    static  addIssue({Issue,Severity,Status,user}){
+    static  addIssue({Issue,Description,Severity,Status,user}){
         const config={
             headers:{
                 "Content-Type":"application/json"
             }
         }
-        const body=JSON.stringify({Issue,Severity,Status,user});
+        const body=JSON.stringify({Issue,Description,Severity,Status,user});
          console.log("Data:",body);
 
         return axios.post("http://localhost:8000/add_issue",body,config)
@@ -51,13 +51,13 @@ export default class issueApi{
 
 
     
-    static  editIssue({id,Issue,Severity,Status,user}){
+    static  editIssue({id,Issue,Description,Severity,Status,user,Comments}){
         const config={
             headers:{
                 "Content-Type":"application/json"
             }
         }
-        const body=JSON.stringify({id,Issue,Severity,Status,user});
+        const body=JSON.stringify({id,Issue,Description,Severity,Status,user,Comments});
          console.log("Data:",body);
 
         return axios.post("http://localhost:8000/update_issue",body,config)

@@ -18,7 +18,7 @@ import TrendingIssues from './TrendingIssues';
 
 const styles = {
   mediaItem: {
-    border: "1px solid #b1b1b1",
+    border: "1px solid white",
     backgroundColor: "#f5f5f5",
 
   },
@@ -30,7 +30,7 @@ const styles = {
 
 function Issues(){
   const dispatch=useDispatch();
-
+  
   const createLegend=(json)=> {
     var legend = [];
     for (var i = 0; i < json["names"].length; i++) {
@@ -68,19 +68,34 @@ function Issues(){
   // const [issues,setIssues]=useState(null);
 
   const  legendPie = {
-    names: ["High", "Trending", "Zero","Low"],
-    types: ["success", "primary","danger", "info"]
+    names: ["Closed", "In Progress", "Open"],
+    types: ["success", "primary","danger"]
   };
-var highStock=10;
-var trending=5;
-var OutOfStock=2;
-var lowStock=1;
-  var total=highStock+ trending+ OutOfStock+lowStock;
-// const total=100
+
+var open=0;
+
+var closed=0;
+var inProgress=0;
+// var lowStock=1;
+for(var i=0;i<issues.length;i++)
+{
+
+  if(issues[i].Status==='Open')
+  open++;
+  else if(issues[i].Status==='Closed')
+  closed++;
+  else if(issues[i].Status==='In Progress')
+  inProgress++;
+}
+var total=issues.length;
+console.log(open,closed,inProgress,total);
+
     var dataPie1 = {
-      labels: [parseInt(highStock/total*100)+"%", parseInt(trending/total*100)+"%",parseInt(OutOfStock/total*100)+"%",parseInt(lowStock/total*100)+"%"],
-      series: [highStock, trending, OutOfStock,lowStock]
+      labels: [parseInt(closed/total*100)+"%", parseInt(inProgress/total*100)+"%",parseInt(open/total*100)+"%"],
+      series: [closed, inProgress, open]
     };
+
+
   const addNotification = msg => {
     const notification = notificationSystem.current;
     notification.addNotification({
@@ -262,7 +277,7 @@ var user=  user;
               icon={faThumbtack}
                 statsIcon="fa fa-clock-o"
                 title="Issue Chart"
-                category="Last Campaign Performance"
+                category="Average Performance of Status"
                 stats="Updated Now"
                 content={
                   <div
@@ -288,7 +303,7 @@ var user=  user;
                   
                   <Row style={{display:'flex',alignItems:'center',justifyContent:'space-between'}}>
                   
-                          <Col sm={4} style={{display:'flex',alignItems:'center', width:'70%',color:'#b1b1b1',paddingLeft:'.4rem',borderRadius:'20px',border:'1px solid #b1b1b1',margin:'5px'}}>
+                          <Col sm={4} style={{display:'flex',alignItems:'center', width:'70%',color:'gray',paddingLeft:'.4rem',borderRadius:'20px',border:'1px solid white',margin:'5px'}}>
                                     <FontAwesomeIcon icon={faSearch}/>
                                     <input onChange={(e)=>{ setQ(e.target.value)}} style={{width:'90%',border:'none',padding:'.2rem 0 .2rem.5rem',color:'black'}} placeholder="Search Issues" type="text"/>
                                     {isAuthenticated?
@@ -340,9 +355,9 @@ var user=  user;
                                 </Accordion.Toggle>
                                 <Accordion.Collapse eventKey="0">
                                 <Card.Body >
-                                  <div className="range-input" ><span style={{color:'#b1b1b1'}}><b>Min:</b></span><input  type='number' value={  minRange} onChange={(e)=> setState({minRange:e.target.value})}/>
+                                  <div className="range-input" ><span style={{color:'white'}}><b>Min:</b></span><input  type='number' value={  minRange} onChange={(e)=> setState({minRange:e.target.value})}/>
                                   </div>
-                                  <div className="range-input"><span style={{color:'#b1b1b1'}} ><b>Max:</b></span><input  type='number' value={  maxRange} onChange={(e)=> setState({maxRange:e.target.value})}/>
+                                  <div className="range-input"><span style={{color:'white'}} ><b>Max:</b></span><input  type='number' value={  maxRange} onChange={(e)=> setState({maxRange:e.target.value})}/>
                                 </div>
                                 </Card.Body>
                                 </Accordion.Collapse>
@@ -411,8 +426,8 @@ var user=  user;
                                 <Card.Body>
                                     <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around', alignItems:'center'}}>
                                         
-                                        <div onClick={()=>{ setState(prev=>({isAscending:!prev.isAscending}))}} className="asending" style={{border:  isAscending?'1px solid green':'',background:  isAscending?' rgb(194, 255, 194)':'',marginBottom:'.6rem',display:'flex',alignItems:'center',cursor:'pointer'}}><a><FontAwesomeIcon style={{color:!  isDecending?'#3b44c1':'#b1b1b1'}} icon={faArrowAltCircleUp}/><h7>Ascending</h7></a></div>
-                                        <div onClick={()=>{ setState(prev=>({isDecending:!prev.isDecending}))}} className="desending" style={{border:  isDecending?'1px solid red':'',background:  isDecending?' rgb(255, 213, 213)':'',display:'flex',alignItems:'center',cursor:'pointer'}}><FontAwesomeIcon style={{color:!  isAscending?'red':'#b1b1b1'}} icon={faArrowAltCircleDown}/><h7>Decending</h7></div>
+                                        <div onClick={()=>{ setState(prev=>({isAscending:!prev.isAscending}))}} className="asending" style={{border:  isAscending?'1px solid green':'',background:  isAscending?' rgb(194, 255, 194)':'',marginBottom:'.6rem',display:'flex',alignItems:'center',cursor:'pointer'}}><a><FontAwesomeIcon style={{color:!  isDecending?'#3b44c1':'white'}} icon={faArrowAltCircleUp}/><h7>Ascending</h7></a></div>
+                                        <div onClick={()=>{ setState(prev=>({isDecending:!prev.isDecending}))}} className="desending" style={{border:  isDecending?'1px solid red':'',background:  isDecending?' rgb(255, 213, 213)':'',display:'flex',alignItems:'center',cursor:'pointer'}}><FontAwesomeIcon style={{color:!  isAscending?'red':'white'}} icon={faArrowAltCircleDown}/><h7>Decending</h7></div>
                                     </div>
                                 </Card.Body>
                                 </Accordion.Collapse>
@@ -454,20 +469,20 @@ var user=  user;
                             </Row> */}
                             <Row style={{display:'flex',alignItems:'center'}}>
                              
-                                <h7  style={{display:  isSeverity?'flex':'none',margin:'0rem 0rem',fontWeight:'bold',fontSize:'12px'}}>Severity: {issue.Severity}</h7><br/>
+                                <h7  style={{display:  isSeverity?'flex':'none',margin:'0rem 0rem',color:'rgb(252, 138, 62)',fontWeight:'bold',fontSize:'12px'}}>Severity: {issue.Severity}</h7><br/>
                                 {/* <p style={{display:  isStatus?'':'none',margin:'0 0 0 .5rem',borderRadius:'5px',background:'green',color:'white',padding:'.1rem .3rem',fontSize:'12px'}}>{issue.rating?issue.rating:"0"} <FontAwesomeIcon  icon={faStar}/></p>  */}
                              
                             </Row>
                             <Row style={{display:'flex',fontSize:'12px'}}>
                             </Row>
                              <Row style={{fontSize:"12px",paddingBottom:'.2rem'}}>
-                               <div style={{display:  isStatus?'flex':'none'}}> <h7 style={{color:'#b1b1b1',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faShoppingBag}/><b style={{marginRight:'.2rem'}}>Status:</b></h7><span style={{color:issue.Status.localeCompare("Open")===0?'#1bc943':'rgb(252 102 116) ',borderRadius:'5px',border:issue.Status.localeCompare("Open")===0?'1px solid #1bc943':' 1px solid #f83245',padding:'.0rem .3rem'}}><b>{issue.Status}</b></span>
+                               <div style={{display:  isStatus?'flex':'none'}}> <h7 style={{color:'white',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faShoppingBag}/><b style={{color:'rgb(252, 138, 62)',marginRight:'.2rem'}}>Status:</b></h7><span style={{color:issue.Status.localeCompare("Open")===0?'#1bc943':'rgb(252 102 116) ',borderRadius:'5px',border:issue.Status.localeCompare("Open")===0?'1px solid #1bc943':' 1px solid #f83245',padding:'.0rem .3rem'}}><b>{issue.Status}</b></span>
                             </div></Row>
                             <Row style={{fontSize:"12px",paddingBottom:'.2rem'}}>
-                               <div style={{display:  isAddedBy?'flex':'none'}}> <h7 style={{color:'#b1b1b1',display:'flex',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faUser}/><b style={{marginRight:'.2rem'}}>Raised By:</b></h7><span><b>{issue.user?issue.user.fname:"Unknown"}</b></span>
+                               <div style={{display:  isAddedBy?'flex':'none'}}> <h7 style={{color:'white',display:'flex',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faUser}/><b style={{color:'rgb(252, 138, 62)',marginRight:'.2rem'}}>Raised By:</b></h7><span><b>{issue.user?issue.user.fname+" "+issue.user.lname :"Unknown"}</b></span>
                            </div> </Row>
                             <Row style={{display:'flex',alignItems:'center', fontSize:"12px"}}>
-                                <h7 style={{display:isDate?'flex':'none',color:'#b1b1b1',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faCalendarAlt}/><b style={{marginRight:'.2rem'}}>Created Date:</b><span>{issue.date}</span></h7>
+                                <h7 style={{display:isDate?'flex':'none',color:'white',alignItems:'center'}}><FontAwesomeIcon style={{marginRight:'.2rem'}} icon={faCalendarAlt}/><b style={{color:'rgb(252, 138, 62)',marginRight:'.2rem'}}>{issue.r_date?"Resolve Date:":"Created Date:"}</b><span style={{color:'white'}}>{issue.r_date?issue.r_date:issue.date}</span></h7>
                             </Row> 
                         </Card.Subtitle>
                        

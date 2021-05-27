@@ -29,10 +29,7 @@ const renderCard = () =>
     </Provider>,
   );
 
-//   beforeEach(() => {
-//     window.getComputedStyle = () => {};
-   
-// });
+
   test('Renders the AppNavbar', () => {
     const { asFragment } = renderCard();
     expect(asFragment()).toMatchSnapshot();

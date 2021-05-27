@@ -1,15 +1,12 @@
 import React, { useEffect,lazy } from 'react';
-import logo from './logo.svg';
 import { BrowserRouter, Route, Router} from 'react-router-dom';
-import { Counter } from './features/counter/Counter';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectAuth, selectUser } from './features/user/userSlice';
 import { loadIssueAsync } from './features/issue/issueSlice';
 import './App.css';
-// const Dashboard = lazy(() => import('./components/views/Dashboard'));
-import UserComponent from './features/user/UserComponent';
 import Loading from './components/LazyLoadingPage/Loading';
 import { Suspense } from 'react';
+import AboutUs from './components/AboutUs/AboutUs';
 const AppNavbar=lazy(()=>import('./components/Navbar/AppNavbar'));
 const Footer=lazy(()=>import('./components/Footer/Footer'));
 const UserForm=lazy(()=>import('./features/user/UserForm'));
@@ -42,6 +39,7 @@ function App() {
       <Route exact path="/updateIssue" component={EditIssue}/>
       <Route exact path="/addIssue" component={IssueForm}/>
       <Route path="/issue" component={SingleIssue}/>
+      <Route path="/aboutUs" component={AboutUs}/>
       {/* <UserForm/> */}
       <Footer/>
       </Suspense>
