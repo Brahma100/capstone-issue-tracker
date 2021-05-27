@@ -1,36 +1,25 @@
-import { faAlignLeft, faArrowAltCircleLeft, faBlog, faCalendarAlt, faCartPlus, faChevronDown, faEdit, faHistory, faShoppingBag, faShoppingBasket, faStar,  faTrashAlt,  faUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowAltCircleLeft, faBlog, faCalendarAlt, faCartPlus, faChevronDown, faEdit, faHistory, faShoppingBag, faShoppingBasket, faStar,  faTrashAlt,  faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import { Accordion, Button, Card, Col, Container, Dropdown, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
-import { connect, useDispatch, useSelector } from 'react-redux';
-import { NavLink, useHistory,useParams } from 'react-router-dom';
+import {  Button, Card, Col, Container, Dropdown, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
+import {  useDispatch, useSelector } from 'react-redux';
+import { NavLink, useParams } from 'react-router-dom';
 
 import { selectAuth, selectUser } from '../user/userSlice';
-import { deleteIssueAsync } from './issueSlice';
+
 import './SingleIssue.css';
 import avatar from '../../assets/images/avatar.png'
 
 const SingleIssue=(props)=>{
     console.log(props);
-    const dispatch=useDispatch();
+    // const dispatch=useDispatch();
     const issue=props.history.location.state.issue;
     const user=props.history.location.state.issue.user;
     const editUser=props.history.location.state.issue.editUser;
 
-    console.log("Cretaed User.....",user);
+  
 
     const isAuthenticated=useSelector(selectAuth);
-  
-    var params=useParams();
-
-    const userinfo= useSelector(selectUser);
-
-      const [msg,setMsg]=useState(null);
-      const [isBlocking,setIsBlocking]=useState(false);
-      const [Id,setId]=useState(issue.id); 
-      const [Issue,setIssue]=useState(issue.Issue); 
-      const [Severity,setSeverity]=useState(issue.Severity); 
-      const [Status,setStatus]=useState(issue.Status); 
 
 
  
@@ -42,29 +31,16 @@ const SingleIssue=(props)=>{
             props.history.push('/')
           
            }
-        //    else{
-        // setItem(history.location.state.item);
-        // // console.log("Items",history.location.state.item);
-        // // console.log("User",history.location.state.user);
-        // props.rankItem({id:history.location.state.item.id});
+       
     
     },[props,isAuthenticated]);
-    // useEffect(()=>{
-    //     //       if(parseInt(localStorage.getItem(history.location.state.item.id))!==parseInt(history.location.state.user._id)){
-    //             // console.log("User1",history.location.state.user._id,localStorage.getItem(history.location.state.item.id));
-    //     //         localStorage.setItem(history.location.state.item.id,history.location.state.user._id);
-               
-    //     //     }
-            
-    //       },[]);
+    
     return(
      <>
  
         <div>
             <Container style={{marginTop:'1rem'}}>
-                {/* <Row>
-                    <Card><h1>{params.name}</h1></Card>
-                </Row> */}
+               
                 <Row>
                     <Col sm={3}>
 
@@ -73,19 +49,13 @@ const SingleIssue=(props)=>{
                         <Card.Header><b><p>{issue.Issue}</p></b></Card.Header>
                       <Card.Body style={{display:'flex',flexDirection:'column',paddingLeft:'3rem',maxWidth:'30rem'}}>
                                                                            
-                        {/* <Card.Title><b>{issue.Issue}</b></Card.Title> */}
+                       
                         <Card.Subtitle style={{marginLeft:'0rem'}}>
-                        {/* <Row>
-                                <span style={{color:'#3b44c1',fontSize:'.8rem'}}>{issue.manufacturer}</span>
-                            </Row> */}
-                            {/* <Row>
-                                <h3 style={{margin:'0rem'}}>{issue.Issue}</h3 >
-                            </Row> */}
+                        
                             <Row style={{display:'flex',alignItems:'center'}}>
                              
                                 <h7  style={{color:'rgb(252, 138, 62)',display: 'flex',margin:'0rem 0rem',fontWeight:'bold',fontSize:'12px'}}>Severity: {issue.Severity}</h7><br/>
-                                {/* <p style={{display:  isStatus?'':'none',margin:'0 0 0 .5rem',borderRadius:'5px',background:'green',color:'white',padding:'.1rem .3rem',fontSize:'12px'}}>{issue.rating?issue.rating:"0"} <FontAwesomeIcon  icon={faStar}/></p>  */}
-                             
+                               
                             </Row>
                             <Row style={{display:'flex',fontSize:'12px'}}>
                             </Row>
@@ -103,8 +73,7 @@ const SingleIssue=(props)=>{
                       </Card.Body>
                      
                       <div className="botto-button" style={{display:'flex',alignItems:'center'}} >
-                        {/* <UpdateProductModal isAuthenticated={  isAuthenticated} issue={issue}/> */}
-                        
+                       
                         
 
                         <NavLink 

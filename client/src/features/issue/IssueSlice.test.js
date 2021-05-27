@@ -2,7 +2,7 @@ import {issues, issues_after_delete} from './IssueTestData';
 import reducer, {
   addIssueAsync,
   deleteIssueAsync,
-  editIssueAsync,
+ 
   loadIssueAsync
 } from './IssueSlice';
 
@@ -109,60 +109,6 @@ describe('IssueSlice', () => {
       });
   });
 
-// Testing EditIssueAsync Reducers
-
-  // describe('editIssueAsync Reducers', () => {
-
-  //   const initialState={
-  //     issuesList:payload.issues,
-  //     isLoading:false,
-  //     isLoaded:false
-  // }
-    
-  //   it('sets isLoading true when editIssueAsync is pending', () => {
-  //     const action = { type: editIssueAsync.pending.type };
-  //     const state = reducer(initialState, action);
-  //     expect(state).toEqual({
-  //       issuesList:payload.issues,
-  //       isLoading:true,
-  //       isLoaded:false
-  //   });
-  //   });
-
-  //   it('sets the id and list when editIssueAsync is fulfilled', () => {
-  //     const action = { type: editIssueAsync.fulfilled.type, payload:{
-  //       // "Issue":{
-  //         "id": "01db0133-e90f-4c2c-a003-b9778e260140",
-  //         "Issue": "Unknown Issue on Loading Add to Cart Component",
-  //         "Severity": "Minor",
-  //         "Status": "Closed"
-  //       // }
-  //     } };
-  //     const state = reducer(initialState, action);
-      
-  //     expect(state).toEqual({
-  //       issuesList:{"id": "01db0133-e90f-4c2c-a003-b9778e260140",
-  //       "Issue": "Unknown Issue on Loading Add to Cart Component",
-  //       "Severity": "Minor",
-  //       "Status": "Closed"},
-  //       isLoading:false,
-  //       isLoaded:true
-  //   });
-  //   });
-
-  //   it('sets isLoading false when editIssueAsync is rejected', () => {
-  //       const action = { type: editIssueAsync.rejected.type, payload: { error: 'some error' } };
-  //       const state = reducer(initialState, action);
-  //       expect(state).toEqual({
-  //         issuesList:payload.issues,
-  //         isLoading:false,
-  //         isLoaded:false
-  //     });
-  //     });
-  // });
-
-// Testing DeleteIssueAsync Reducers
-
   describe('deleteIssueAsync Reducers', () => {
 
     const initialState={
@@ -218,83 +164,3 @@ describe('IssueSlice', () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { store } from '../../app/store';
-// import { loadIssueAsync } from './issueSlice';
-// // import { updateToDo } from '../issueSlice';
-
-// store.dispatch(loadIssueAsync());
-
-// test('IssueList test', () => {
-    
-//     let issues = store.getState().issue.issuesList;
-//     console.log("Issues............",store.getState().issue.issuesList);
-//     const originalIssue = issues.find((p) => p.id === 1);
-//     expect(originalIssue?.Severity).toBe('Critical');
-//     expect(originalIssue?.Status).toBe('In Progress ');
-//     expect(originalIssue?.Issue).toBe('On Cliking Delete, the application crashes');
-   
-//     // store.dispatch(updateToDo({ toDoId: 1, isComplete: false }));
-//     // state = store.getState().toDo;
-//     // let changedToDo = state.toDoList.find((p) => p.toDoId === 1);
-//     // expect(changedToDo?.isComplete).toBeFalsy();
-   
-//     // store.dispatch(updateToDo({ toDoId: 1, description: 'be merry' }));
-//     // state = store.getState().toDo;
-//     // changedToDo = state.toDoList.find((p) => p.toDoId === 1);
-//     // expect(changedToDo?.description).toBe('be merry');
-   
-//     // store.dispatch(
-//     //   updateToDo({ toDoId: 1, description: 'eat tacos', isComplete: true }),
-//     // );
-//     // state = store.getState().toDo;
-//     // const backToOriginalToDo = state.toDoList.find((p) => p.toDoId === 1);
-   
-//     // // snapshots can be objects
-//     // expect(backToOriginalToDo).toMatchInlineSnapshot(`
-//     //   Object {
-//     //     "description": "eat tacos",
-//     //     "isComplete": true,
-//     //     "profileId": 1,
-//     //     "toDoId": 1,
-//     //   }
-//     // `);
-   
-//     // // deep object equality
-//     // expect(backToOriginalToDo).toEqual(originalToDo);
-//   });

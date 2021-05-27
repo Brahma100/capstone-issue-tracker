@@ -53,6 +53,6 @@ export default class UserApi{
 
         return axios.post("http://localhost:8000/auth/register",body,config)
              .then(res=> res.data)
-            //  .catch(err=>console.log("Register Error:",err))
+         
     }
 }

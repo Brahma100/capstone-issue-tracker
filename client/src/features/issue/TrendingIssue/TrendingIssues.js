@@ -1,7 +1,7 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectIssues } from './issueSlice';
-import avatar from '../../assets/images/avatar.png'
+import { useSelector } from 'react-redux';
+import { selectIssues } from '../issueSlice';
+import avatar from '../../../assets/images/avatar.png'
 import './TrendingIssues.css'
 
 
@@ -39,7 +39,7 @@ const TrendingIssues=()=>{
           <div class="tags">
             <a href="#">{issue.Severity}</a>
             <a href="#">{issue.Status}</a>
-            {/* <a href="#">Rank #{issue.rank}</a> */}
+           
           </div>
           <div>
             <p>Rank:#{issue.rank}</p>

@@ -114,7 +114,7 @@ export const userSlice=createSlice({
             state.userinfo=action.payload;
             // console.log("Login Success",action);
             state.err=null;
-            // console.log("UserAction",action);
+            
         },
         [loginUserAsync.rejected]:(state,action)=>{
             console.log("Login Failed");
@@ -137,7 +137,7 @@ export const userSlice=createSlice({
             state.isAuthenticated=true;
             state.userinfo=action.payload.user;
             localStorage.setItem('token',action.payload.token);
-            // console.log("Register UserAction",action.payload);
+           
             state.token=localStorage.getItem('token');
             state.err=null;
         },
@@ -162,7 +162,7 @@ export const userSlice=createSlice({
             state.userinfo=action.payload;
             state.token=null;
             localStorage.removeItem('token')
-            // console.log("Logout UserAction",action);
+           
         },
         [logoutUserAsync.rejected]:(state,action)=>{
             // console.log("Register Failed");

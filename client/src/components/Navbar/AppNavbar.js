@@ -71,18 +71,7 @@ function AppNavbar(){
                         <div style={{color:'rgb(187 187 187)'}}>{user? user.email:'Hello Guest'}</div>
                     </div>
                             </Dropdown.Item><hr/>
-                             <Dropdown.Item className="dropdown-list-nav"> <Nav.Item  >
-                            <div className="dropdown-list-item">
-                            <FontAwesomeIcon style={{marginRight:'.5rem'}} icon={faCog}/><h7>Settings</h7>    
-                            </div>    
-                    </Nav.Item></Dropdown.Item>
-                             <Dropdown.Item className="dropdown-list-nav" > <Nav.Item >
-                               <NavLink to="/admin/user">
-                            <div className="dropdown-list-item">
-                            <FontAwesomeIcon style={{marginRight:'.5rem'}} icon={faUserEdit}/><h7>Profile</h7>    
-                            </div>    
-                            </NavLink> 
-                    </Nav.Item></Dropdown.Item>
+                            
                     <Dropdown.Item> <Nav.Item ><Logout/></Nav.Item></Dropdown.Item>
                    
                     </Dropdown.Menu>
@@ -116,7 +105,7 @@ function AppNavbar(){
             <div  style={{color:'#000',textDecoration:'none'}}>
             <Navbar expand="sm" bg="dark"> 
                 <Container>
-                    <Navbar.Brand ><NavLink to='/'><div className="nav-brand"><img alt="alt" className="nav-logo" src={logo}/><div className="brand-text"><span><b>Ticket</b></span><b>TrackerZ</b></div></div></NavLink></Navbar.Brand>
+                    <Navbar.Brand ><NavLink to='/'><div className="nav-brand"><img alt="alt" className="nav-logo" src={logo}/><div className="brand-text"><span><b>Issue</b></span><b>TrackerZ</b></div></div></NavLink></Navbar.Brand>
                     <Navbar.Toggle bg='light' variant='dark' onClick={ toggle}/>
                     <Navbar.Collapse  className="mainNavCollapse" isopen={ isopen} navbar>
                         <NavLink  style={{marginLeft:"auto"}} to='/'><b>Home</b></NavLink>

@@ -11,7 +11,7 @@ import { selectAuth, selectAuthError } from '../../user/userSlice';
 import NotificationSystem from 'react-notification-system';
 import ChartistGraph from "react-chartist";
 import Chart_card from '../../../components/Card/Chart_card';
-import TrendingIssues from '../TrendingIssues';
+import TrendingIssues from '../TrendingIssue/TrendingIssues';
 
 
 
@@ -64,7 +64,7 @@ function Issues(){
   const [isBlocked,setIsBlocked]=useState(false);
   const notificationSystem = React.createRef();
   const err=useSelector(selectAuthError);
-  // const [issues,setIssues]=useState(null);
+ 
 
   const  legendPie = {
     names: ["Closed", "In Progress", "Open"],
@@ -107,50 +107,10 @@ var total=issues.length;
   };
 
  const handleClick=(event)=> {
-// console.log("Id:",event.target.id);
 setCurrentPage(Number(event.target.id));
-    //  setState({
-    //   currentPage: Number(event.target.id)
-    // });
-  }
-
-// componentWillUnmount(){
-//   console.log("Blocked:",  isBlocked);
-//     console.log("History:",  history);
-//     if(  isBlocked){
-//           let authenticate = window.confirm("Are You Sure Want To Go ",  history.location.pathname)
-//           if(!authenticate){
-//                     history.push(  history.location.pathname)
-//           }
-//     }
-// }
-
-
-useEffect(
-  function(e){
-    // if(isAuthenticated && !err){
-    //   addNotification("Login Success");
-    // }
-
-  }
-
-,[isAuthenticated,err]);
-
-  const handleView=()=>{
-    if(!  isAuthenticated){
-      
-    }
   }
 
 
-//  const onChangePage(pageOfItems) {
-//     // update state with new page of items
-//     setPageOfItems(pageOfItems);
-//     //  setState({ pageOfItems: pageOfItems });
-
-// }
-
-     
 
       const paginaton=(products)=>{
         if(products.length===0)return [];
@@ -174,31 +134,13 @@ useEffect(
     });
       
       const sort=(products)=>{
-        // console.log("Sorting Called",  isAscending,  isDecending);
-        // let newProducts=products;
-            // if(!isAscending && !isDecending)
-            // newProducts=products;
-            // if(  categoryValue!==0){
-            //   // var Category=  categories.filter(
-            //     //   function (cat) {
-            //       //     console.log(  categoryValue);
-            //       //     if(cat.id ===  categoryValue)return cat.Issue 
-            //       //   }
-            //       // )
-                  
-            //       // let CategoryName=Category[0].Issue;
-            //       let category_name=  categories.filter(category=>parseInt(category.id)===parseInt(  categoryValue));
-            //       console.log("category ID:",  categoryValue,category_name);
-
-            //   products= category_name.length>0?products.filter(issue=>
-            //     issue.category===category_name[0].Issue):products;
-            // }
+       
          if(  isAscending ){
-          //   setState({isDecending:false})
+         
            return products.sort((a, b) => a.price - b.price)
           }
           else if(  isDecending ){
-          //  setState({isAscending:false})
+         
             return products.sort((a, b) => b.price - a.price)
         }
       return products;
@@ -207,19 +149,15 @@ useEffect(
 
       const Search=(products)=>{    
         return (products.length>0 && products.filter(issue=>
-                issue.Issue.toLowerCase().indexOf(  q.toLowerCase())!==-1 || //str.includes(PATTERN)
-                // issue.price.toLowerCase().indexOf(q.toLowerCase())!==-1 ||
+                issue.Issue.toLowerCase().indexOf(  q.toLowerCase())!==-1 || 
+               
                 issue.Severity.toLowerCase().indexOf(  q.toLowerCase())!==-1 ||
                 issue.Status.toLowerCase().indexOf(  q.toLowerCase())!==-1
 
                 ));
 
         }
-      //   const Range=(p)=>{
-      //     console.log("min:",  minRange,"  max:",  maxRange," num:",p.length);
-
-      //     return p.filter(issue=>parseInt(issue.price)>=  minRange && parseInt(issue.price)<=  maxRange)
-      // }
+    
 var user=  user;
 
 
@@ -229,23 +167,6 @@ var user=  user;
             <>
              <NotificationSystem role="notification" ref={notificationSystem} />
 <div>
-{/* <div> style={{ backgroundImage: `url("${back}")`,backgroundRepeat:'no-repeat'}}> */}
-      
-    {/* <Prompt
-                when={  isBlocked}
-                // message={(location)=> `Are You Sure Want To Leave ${location.pathname}`}
-                message={(location, action) => {
-                  if (action === 'POP') {
-                    console.log("Backing up...",  history)
-                  } 
-              
-                  let check= location.pathname.startsWith("/app")
-                    ? true
-                    : `Are you sure you want to go to ${  history.location.pathname}?`
-                    // if(check)  history.push(  history.location.pathname)
-                    return check
-                }}
-/> */}
    
     
     <Container  style={{paddingTop:'2rem',width:'100%'}}>
@@ -265,7 +186,7 @@ var user=  user;
 
           }
 
-          {/* <Container> */}
+        
             <Row>
               <Col md={8}>
               <TrendingIssues/>
@@ -292,7 +213,7 @@ var user=  user;
               />
               </Col>
             </Row>
-          {/* </Container> */}
+        
         
 
           { issues.length===0?<><Spinner style={{ width: '3rem', height: '3rem', color:'green' }} type="grow" /></>
@@ -328,15 +249,7 @@ var user=  user;
                             
                       
 
-                          {/* {isAuthenticated?
-                          <Col style={{}} sm={2} className='add_issue'>
-                                <NavLink 
-                                to="/addIssue">
-                                      <Button variant="primary" size="sm" style={{marginLeft:'1rem'}} ><FontAwesomeIcon icon={faPlus}/></Button>
-                                  </NavLink>
-                          </Col>
                           
-                          :null} */}
                           <Col style={{}} sm={2} className='filter-icon'>
                             
                                   <DropdownButton  title={<FontAwesomeIcon icon={faFilter} />} className='filter-button' style={{borderRadius:'50%',background:'transparent',color:'#3c44b1 ',border:'none',boxShadow:'none'}}> 
@@ -347,22 +260,7 @@ var user=  user;
 
                 
                     <Card.Body className="filter-body" style={{width:'15rem',padding:'0rem'}}>
-                        {/* <Accordion defaultActiveKey="0">
-                            <Card>
-                                <Accordion.Toggle style={{background:!  open1?"#fff":'#f3f3f3'}} eventKey="0" onClick={() => setOpen1(!open1)}>
-                                    <div className="accordion-header" ><h6>Severity</h6><FontAwesomeIcon style={{color:  open1?"red":"#3b44c1"}} icon={  open1?faChevronCircleRight:faChevronCircleDown} /></div>
-                                </Accordion.Toggle>
-                                <Accordion.Collapse eventKey="0">
-                                <Card.Body >
-                                  <div className="range-input" ><span style={{color:'white'}}><b>Min:</b></span><input  type='number' value={  minRange} onChange={(e)=> setState({minRange:e.target.value})}/>
-                                  </div>
-                                  <div className="range-input"><span style={{color:'white'}} ><b>Max:</b></span><input  type='number' value={  maxRange} onChange={(e)=> setState({maxRange:e.target.value})}/>
-                                </div>
-                                </Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                           
-                            </Accordion> */}
+                       
                             <Accordion defaultActiveKey="1">
 
                             <Card>
@@ -380,65 +278,13 @@ var user=  user;
                             </Accordion>
 
 
-                            {/* <Accordion defaultActiveKey="10">
-
-                            <Card>
-                            <Accordion.Toggle  style={{background:!  open3?"#fff":'#f3f3f3'}} eventKey="10" onClick={()=> setOpen3(!open3)}>
-                                    <div className="accordion-header"><h6>Category</h6><FontAwesomeIcon style={{color:  open3?"red":"#3b44c1"}} icon={  open3?faChevronCircleRight:faChevronCircleDown}/></div>
-                                </Accordion.Toggle>
-                                <Accordion.Collapse eventKey="10">
-                                <Card.Body>
-
-                                    <Form.Group as={Col}>
-              
-                                            <Form.Control className="category-box"
-                                              as="select"
-                                              // type="password"
-                                              placeholder=""
-                                              name="category"
-                                              value={  categoryValue}
-                                              onChange={(e)=> setState({categoryValue:e.target.value})}
-                                              // isInvalid={!!errors.category}
-                                              
-                                            >
-                                                <option value="0">Choose Category</option>
-                                                { props.categories.map((category)=>(
-                                                      <option value={category.id}>{category.name}</option>
-
-                                                ))}
-                                                
-                                            </Form.Control>
-                                          
-                                          </Form.Group>                                   
-                                </Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                            </Accordion> */}
-
-                            {/* <Accordion defaultActiveKey="5">
-
-                            <Card>
-                            <Accordion.Toggle style={{background:  open4?"#fff":'#f3f3f3'}}  eventKey="3" onClick={()=> setState(prevState => ({open4: !prev open4}))}>
-                                    <div className="accordion-header"><h6>Sort By Price</h6><FontAwesomeIcon style={{color:  open4?"#3b44c1":"red"}} icon={  open4?faChevronCircleDown:faChevronCircleRight}/></div>
-                                </Accordion.Toggle>
-                                <Accordion.Collapse eventKey="3">
-                                <Card.Body>
-                                    <div style={{display:'flex',flexDirection:'column',justifyContent:'space-around', alignItems:'center'}}>
-                                        
-                                        <div onClick={()=>{ setState(prev=>({isAscending:!prev.isAscending}))}} className="asending" style={{border:  isAscending?'1px solid green':'',background:  isAscending?' rgb(194, 255, 194)':'',marginBottom:'.6rem',display:'flex',alignItems:'center',cursor:'pointer'}}><a><FontAwesomeIcon style={{color:!  isDecending?'#3b44c1':'white'}} icon={faArrowAltCircleUp}/><h7>Ascending</h7></a></div>
-                                        <div onClick={()=>{ setState(prev=>({isDecending:!prev.isDecending}))}} className="desending" style={{border:  isDecending?'1px solid red':'',background:  isDecending?' rgb(255, 213, 213)':'',display:'flex',alignItems:'center',cursor:'pointer'}}><FontAwesomeIcon style={{color:!  isAscending?'red':'white'}} icon={faArrowAltCircleDown}/><h7>Decending</h7></div>
-                                    </div>
-                                </Card.Body>
-                                </Accordion.Collapse>
-                            </Card>
-                            </Accordion> */}
-   
+                            
                 </Card.Body>   
                            
                          
                            </Card>
                            </div>
-                                       {/* </Row>     */}
+                                     
                                 </DropdownButton>
                           </Col>
       
@@ -458,18 +304,13 @@ var user=  user;
                         <Card.Header><b><p>#{id+1+(currentPage-1)*6}) {issue.Issue}</p></b></Card.Header>
                       <Card.Body style={{display:'flex',flexDirection:'column',paddingLeft:'3rem',maxWidth:'30rem'}}>
                                                                            
-                        {/* <Card.Title><b>{issue.Issue}</b></Card.Title> */}
+                       
                         <Card.Subtitle style={{marginLeft:'0rem'}}>
-                        {/* <Row>
-                                <span style={{color:'#3b44c1',fontSize:'.8rem'}}>{issue.manufacturer}</span>
-                            </Row> */}
-                            {/* <Row>
-                                <h3 style={{margin:'0rem'}}>{issue.Issue}</h3 >
-                            </Row> */}
+                        
                             <Row style={{display:'flex',alignItems:'center'}}>
                              
                                 <h7  style={{display:  isSeverity?'flex':'none',margin:'0rem 0rem',color:'rgb(252, 138, 62)',fontWeight:'bold',fontSize:'12px'}}>Severity: {issue.Severity}</h7><br/>
-                                {/* <p style={{display:  isStatus?'':'none',margin:'0 0 0 .5rem',borderRadius:'5px',background:'green',color:'white',padding:'.1rem .3rem',fontSize:'12px'}}>{issue.rating?issue.rating:"0"} <FontAwesomeIcon  icon={faStar}/></p>  */}
+                                
                              
                             </Row>
                             <Row style={{display:'flex',fontSize:'12px'}}>
@@ -488,7 +329,7 @@ var user=  user;
                       </Card.Body>
                       </NavLink>
                       <div className="bottom-button" >
-                        {/* <UpdateProductModal isAuthenticated={  isAuthenticated} issue={issue}/> */}
+                       
                         
                         {!isAuthenticated?<>
                           <NavLink 

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import NotificationSystem from 'react-notification-system';
-// import './UserForm.css'
+
 import { Prompt, withRouter} from 'react-router-dom';
 import {useSelector,useDispatch} from 'react-redux'
 import { addUserAsync, loadUserAsync,loginUserAsync,selectAuth,selectAuthError,selectUser } from './userSlice';
-import back from '../../assets/images/back.jpg'
+
 
 import banner from '../../assets/images/LoginSVG.png' 
 
 
-import { Button,InputGroup,Col,Alert,NavLink, Modal,Form,Container,Row,Card } from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import { Button,InputGroup,Col,Form,Container,Row,Card } from 'react-bootstrap';
+
 import {Formik} from 'formik';
 import * as yup from 'yup';
 
@@ -57,7 +57,7 @@ function UserForm(props){
     const [postal,setPostal]=useState("");
     const [ip,setIp]=useState("");
     const [startRender,setStartRender]=useState(true);
-    const [isBlocking,setIsBlocking]=useState(true);
+    const [isBlocking,setIsBlocking]=useState(false);
     const [remember,setRemember]=useState(true);
     const [msg,setMsg]=useState(null);
 
@@ -139,32 +139,9 @@ useEffect(
           else{
             setMsg(null);
 
-            // addNotification1("Login Success");
+           
           }
-          // setMsg(null);
-        // if(error!==prevProps.error){
-        //     if(error.id==="REGISTER_FAIL"){
-        //           setState({msg:error.msg.msg});
-        //           setState({isBlocking:true});
-        //           addNotification( msg);
-        //       }
-        //       else if(error.id==="LOGIN_FAIL"){
-        //           setState({msg:error.msg.msg});
-        //           setState({isBlocking:true});
-        //         setTimeout(()=>{
-                  
-        //             addNotification( msg? msg:"Something Went Wrong");
-        //         },60);
-        //         // console.log("Error R:",error.msg.msg, msg);
-        //     }
-        //     else{
-        //           setState({msg:null});
-                
-        //     }
-        // }
-        
 
-        // dispatch(loadUserAsync());
        if(isAuthenticated){
          console.log("update Component");
           props.history.push('/')
@@ -187,8 +164,7 @@ useEffect(
            {!startRender?<Loading/>:
           <div>
 <div className="App">
-   {/* style={{alignItems:'center', backgroundImage: `url("${back}")`,backgroundRepeat:'no-repeat'}} > */}
-      
+    
            
             <Container>
           <div className="content" >
@@ -209,11 +185,11 @@ useEffect(
                                 <h7 style={{fontSize:'22px'}}><b>Create a New Account</b></h7>    
                                 <span style={{fontSize:'14px',color:'rgba(59,62,102,.5)'}}>Start benefiting from our tools right away</span>
                             </div> 
-                            {/* { msg?<Alert color="danger">{ msg}</Alert>:null}    */}
+                           
                         </Card.Header>  
 <Card.Body>
                         <Formik
-    // validator={() => ({})}
+
       validationSchema={schemaRegister}
       initialValues={{
         fname:'',
@@ -237,8 +213,7 @@ useEffect(
         }
         console.log("OnSubmit Data.......",newUser)
         setIsBlocking(false);
-          // setState({isBlocking:false});
-                // console.log("Update:", isBlocking);
+         
          dispatch(addUserAsync(newUser));
           setTimeout(()=>{
                               dispatch(loadUserAsync());

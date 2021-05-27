@@ -6,9 +6,7 @@ const jsonServer = require('json-server')
 const jwt = require('jsonwebtoken')
 const config=require('config');
 const crypto= require('crypto')
-
 const server = jsonServer.create()
-
 const router = jsonServer.router('./Json_DataBase_Files/issues.json')
 const userdb = JSON.parse(fs.readFileSync('./Json_DataBase_Files/users.json', 'UTF-8'))
 const issuedb=JSON.parse(fs.readFileSync('./Json_DataBase_Files/issues.json','UTF-8'))
@@ -31,10 +29,6 @@ function createToken(payload){
   return jwt.sign(payload, SECRET_KEY, {expiresIn})
 }
 
-// Verify the token 
-function verifyToken(token){
-  return  jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ?  decode : err)
-}
 
 // Check if the user exists in database
 
@@ -47,14 +41,6 @@ function CheckIssue({Issue}){
   console.log("Issue Name:",Issue);
   return issuedb.issues.findIndex(issue => issue.Issue === Issue) !== -1
 }
-// function CheckCategory({name}){
-//   console.log("Category Name:",name);
-//   return categorydb.categories.findIndex(category => category.name === name) !== -1
-// }
-
-
-
-//---------------------------------Products View Api--------------------------------------
 
 
 
@@ -178,16 +164,13 @@ if(Status==="Closed"){
     // data.issues[index].editUser=
     data.issues[index].editUser.push({user,Issue,Description,Severity,Status,Comments,date});
     data.issues[index].r_date=r_date;
-    // console.log(data.issues[index].editUser,user);
     
-    // Writing Updated data to Json DB
     var writeData = fs.writeFile("./Json_DataBase_Files/issues.json", JSON.stringify(data), (err, result) => {  // WRITE
       if (err) {
         return res.status(400).json({msg:'Server: Error while Writing into JSON DB'});
       };
     });// End of File Writing
 
-    // Returing Response with 200 Status and Updated Data To the Client
 
   
     res.status(200).json({
